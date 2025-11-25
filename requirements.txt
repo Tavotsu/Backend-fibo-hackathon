@@ -6,3 +6,6 @@ pandas
 requests
 python-multipart
 openai
+motor
+beanie
+boto3
