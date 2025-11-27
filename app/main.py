@@ -24,7 +24,8 @@ async def lifespan(app: FastAPI):
             database=client.ai_art_director, # type: ignore
             document_models=[Campaign, Product, Plan]
         )
-        print("MongoDB Conectado")
+        print("MongoDB Conectado\n")
+        print("Backend inicializado")
     
     yield
     
