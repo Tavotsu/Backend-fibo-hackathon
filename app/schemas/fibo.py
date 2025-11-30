@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional, Literal
 
-# --- Estructuras Internas del JSON de Bria v2 ---
+# Estructuras Internas del JSON de Bria v2
 
 class BriaObject(BaseModel):
     description: str
@@ -32,7 +32,7 @@ class BriaPhotoCharacteristics(BaseModel):
     camera_angle: str = Field(..., description="e.g., Eye-level, low_angle, birds_eye")
     lens_focal_length: str = Field(..., description="e.g., 50mm, 35mm, macro")
 
-# --- EL OBJETO PRINCIPAL (Structured Prompt) ---
+# EL OBJETO PRINCIPAL (Structured Prompt)
 class BriaStructuredPrompt(BaseModel):
     """Esta es la estructura exacta que espera Bria v2"""
     short_description: str = Field(..., description="Resumen fotorealista detallado de la imagen completa")
@@ -45,7 +45,7 @@ class BriaStructuredPrompt(BaseModel):
     context: Optional[str] = None
     artistic_style: str = "realistic, detailed"
 
-# --- Wrappers para tu API ---
+# Wrappers para tu API
 class AgentOutput(BaseModel):
     """Lo que devuelve el Agente (una lista de opciones)"""
     variations: List[BriaStructuredPrompt]

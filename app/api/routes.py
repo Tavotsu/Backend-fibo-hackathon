@@ -13,7 +13,7 @@ import uuid
 
 router = APIRouter()
 
-# --- 1. Gestión de Campañas ---
+# 1. Gestión de Campañas
 @router.post("/campaigns", response_model=Campaign)
 async def create_campaign(campaign_in: CampaignCreate):
     new_campaign = Campaign(
@@ -23,7 +23,7 @@ async def create_campaign(campaign_in: CampaignCreate):
     await new_campaign.insert()
     return new_campaign
 
-# --- 2. Ingesta de Producto ---
+# 2. Ingesta de Producto
 @router.post("/campaigns/{campaign_id}/upload-product")
 async def upload_product(campaign_id: str, file: UploadFile = File(...)):
     campaign = await Campaign.get(campaign_id)
@@ -43,7 +43,7 @@ async def upload_product(campaign_id: str, file: UploadFile = File(...)):
     
     return {"product_id": str(new_product.id), "url": public_url}
 
-# --- 3. El Cerebro (Generate Plan) ---
+# 3. El Cerebro (Generate Plan)
 @router.post("/campaigns/{campaign_id}/generate-plan", response_model=Plan)
 async def generate_plan(campaign_id: str, request: PlanRequest):
     # 1. Validar datos
@@ -56,7 +56,7 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
          raise HTTPException(404, "Campaña no encontrada")
 
     # 2. Llamada al Agente (GPT-4o)
-    print(f"🧠 Agente pensando para: {product.image_url}...")
+    print(f"Agente pensando para: {product.image_url}...")
     
     # Aquí obtenemos la lista de JSONs complejos (BriaStructuredPrompt)
     generated_variations = await analyze_and_plan(
@@ -78,7 +78,7 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
 
     return new_plan
 
-# --- 4. Ejecución (Enviar a Bria) ---
+# 4. Ejecución (Enviar a Bria)
 @router.post("/campaigns/{campaign_id}/execute")
 async def execute_plan(campaign_id: str, request: ExecuteRequest, background_tasks: BackgroundTasks):
     plan = await Plan.get(request.plan_id)
@@ -88,13 +88,13 @@ async def execute_plan(campaign_id: str, request: ExecuteRequest, background_tas
     job_id = f"job_{uuid.uuid4().hex[:8]}"
     
     async def run_generation_task(plan_doc, selected_indices):
-        print(f"⚙️ Job {job_id}: Iniciando generación...")
+        print(f"Job {job_id}: Iniciando generación...")
         
         for index in selected_indices:
             # CORRECCIÓN AQUÍ:
             # Antes accedíamos a .bria_parameters. Ahora 'variation' YA ES el objeto de parámetros.
             if index >= len(plan_doc.proposed_variations):
-                print(f"⚠️ Índice {index} fuera de rango")
+                print(f"Índice {index} fuera de rango")
                 continue
 
             variation = plan_doc.proposed_variations[index] # Esto es un BriaStructuredPrompt
@@ -103,10 +103,10 @@ async def execute_plan(campaign_id: str, request: ExecuteRequest, background_tas
             image_url = await generate_image_bria(variation)
             
             if image_url:
-                print(f"✅ Generado: {image_url}")
+                print(f"Generado: {image_url}")
                 # (Opcional) Aquí podrías guardar el resultado en Mongo
             else:
-                print("⚠️ Falló una generación")
+                print("Falló una generación")
 
     background_tasks.add_task(
         run_generation_task, 

@@ -10,7 +10,7 @@ async def analyze_and_plan(image_url: str, mood: str, count: int = 3) -> list[Br
     Usa GPT-4o Vision para analizar el producto y generar 
     Structured Prompts (JSON) válidos para Bria v2.
     """
-    
+    # Le damos el prompt al modelo
     system_prompt = """
     Eres un Director de Arte experto en Fotografía Publicitaria y en el modelo generativo Bria AI v2.
     Tu objetivo es tomar la imagen de un producto y generar variaciones creativas para una campaña de marketing.
@@ -32,7 +32,7 @@ async def analyze_and_plan(image_url: str, mood: str, count: int = 3) -> list[Br
     """
 
     try:
-        print(f"🤖 Consultando a GPT-4o para mood: {mood}...")
+        print(f"Consultando a GPT-4o para mood: {mood}...")
         response = client.beta.chat.completions.parse(
             model="gpt-4o-2024-08-06",
             messages=[
@@ -53,13 +53,13 @@ async def analyze_and_plan(image_url: str, mood: str, count: int = 3) -> list[Br
         
         parsed_output = response.choices[0].message.parsed
         if not parsed_output:
-            print("❌ El Agente no devolvió un resultado analizable.")
+            print("El Agente no devolvió un resultado analizable.")
             return []
 
         variations = parsed_output.variations
-        print(f"✅ Agente generó {len(variations)} variaciones estructuradas.")
+        print(f"Agente generó {len(variations)} variaciones estructuradas.")
         return variations
 
     except Exception as e:
-        print(f"❌ Error en el Agente: {e}")
+        print(f"Error en el Agente: {e}")
         return []
