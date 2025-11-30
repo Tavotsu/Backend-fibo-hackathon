@@ -11,3 +11,4 @@ openai
 motor
 beanie
 boto3
+pydantic-settings

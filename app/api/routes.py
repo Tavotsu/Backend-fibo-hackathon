@@ -3,7 +3,8 @@ from typing import List
 from app.schemas.fibo import (
     Campaign, CampaignCreate, 
     Product, 
-    Plan, PlanRequest, ProposedVariation, BriaParameters,
+    Plan, PlanRequest, 
+    BriaStructuredPrompt,
     ExecuteRequest
 )
 from app.services.storage import upload_image_to_supabase
@@ -15,7 +16,7 @@ import logging
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-# Campaign Creation
+# 1. Gestión de Campañas
 @router.post("/campaigns", response_model=Campaign)
 async def create_campaign(campaign_in: CampaignCreate):
     """Crea una nueva campaña con brand guidelines"""
@@ -27,7 +28,7 @@ async def create_campaign(campaign_in: CampaignCreate):
     logger.info(f"Campaña creada: {new_campaign.id}")
     return new_campaign
 
-# Product Upload
+# 2. Ingesta de Producto
 @router.post("/campaigns/{campaign_id}/upload-product")
 async def upload_product(campaign_id: str, file: UploadFile = File(...)):
     """Sube imagen de producto a Supabase"""
@@ -36,17 +37,15 @@ async def upload_product(campaign_id: str, file: UploadFile = File(...)):
     campaign = await Campaign.get(campaign_id)
     if not campaign:
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
-
-    # Uploading to Supabase
+    
     public_url = await upload_image_to_supabase(file)
     if not public_url:
-        raise HTTPException(status_code=500, detail="Error subiendo imagen a Supabase")
-
-    # Saving product info in MongoDB
+        raise HTTPException(status_code=500, detail="Error subiendo imagen")
+    
     new_product = Product(
         campaign_id=str(campaign.id),
         image_url=public_url,
-        original_filename=file.filename or "unknown_file"
+        original_filename=file.filename or "unknown"
     )
     await new_product.insert()
     
@@ -73,7 +72,11 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
     
     product = await Product.get(request.product_id)
     if not product:
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
+        raise HTTPException(404, "Producto no encontrado")
+        
+    campaign = await Campaign.get(campaign_id)
+    if not campaign:
+         raise HTTPException(404, "Campaña no encontrada")
 
     # USAR AGENTE LLM para generar variaciones
     try:
