@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     
     # MongoDB
     MONGO_URI: str = os.getenv("MONGO_URI", "")
+    DB_NAME: str = "ai_art_director"
     
     # Supabase Storage (S3-compatible)
     SUPABASE_ENDPOINT_URL: str = os.getenv("SUPABASE_ENDPOINT_URL", "")
@@ -35,7 +36,8 @@ class Settings(BaseSettings):
     
     class Config:
         env_file = ".env"
-        case_sensitive = True
+        case_sensitive = True,
+        extra="ignore"
 
 # Singleton instance
 settings = Settings()

@@ -8,8 +8,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from app.schemas.fibo import Campaign, Product, Plan
 
-load_dotenv()
-
 # Life cycle of the application
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -31,7 +29,7 @@ async def lifespan(app: FastAPI):
     
 
     # Shutdown logic
-    print("Aplicación cerrándose")
+    print("Backend Apagandose")
 
 # Passing the lifespan to FastAPI
 app = FastAPI(title="AI Art Director API", version="1.0.0", lifespan=lifespan)
