@@ -58,31 +58,42 @@ class LLMPlanner:
         Genera N variaciones (patches) del prompt base usando el LLM.
         """
         system = (
+            "You are a World-Class Art Director and Expert Photographer. "
+            "Your goal is to take a simple product and create STUNNING, AWARD-WINNING visual concepts for it. "
+            "Do NOT just describe the product. Build a WORLD around it. "
+            "Use technical photography terms (Lighting, Lens, Angle, Film Stock) from the provided context. "
+            "\n\n"
             "Output ONLY valid JSON. Return an array of exactly N patch objects. "
-            "Each patch is a partial JSON dict to merge into base structured_prompt. "
-            "GOAL: Create visually DISTINCT and CREATIVE variations. "
-            "Vary significantly: camera_angle, lighting, background_setting, aesthetics. "
-            "You can change the setting completely (e.g. from studio to outdoors, or abstract). "
-            "Keep product identity/logo readable, but feel free to change the mood/atmosphere. "
-            "Do NOT invent fake logos."
+            "Each patch is a partial JSON dict to merge into the base structured_prompt. "
+            "Refine 'background_prompt', 'lighting_prompt', 'style_prompt', 'camera_prompt' fields aggressively. "
+            "\n\n"
+            "RULES:"
+            "1. Transform the scene completely. If prompt is 'perfume', don't just put it on a table. Put it on a floating rock in space, or inside a melting glacier."
+            "2. Use specific lighting: 'Volumetric god rays', 'Neon rim lighting', 'Soft diffused window light'."
+            "3. Use specific composition: 'Low angle hero shot', 'Macro detail with bokeh'."
+            "4. Keep the product identity (logo/text) intact, but EVERYTHING around it must change."
+            "5. Make it look EXPENSIVE and CINEMATIC."
         ).replace("N", str(n))
 
-        payload = {
-            "N": n,
-            "user_prompt": user_prompt,
-            "brand_context": brand_ctx,
-            "base_structured_prompt": base_sp,
-            "output_format": "JSON array of N patch objects",
-        }
+        # RAG Context injection logic should be here or handled
+        rag_text = brand_ctx if brand_ctx else "No specific brand guidelines."
+
+        # Simplify payload structure for clarity
+        user_msg = (
+            f"Product/Prompt: {user_prompt}\n"
+            f"Context/Guidelines: {rag_text}\n\n"
+            f"Create {n} DISTINCT and DRAMATIC variations."
+            f"Base SP: {json.dumps(base_sp)}"
+        )
         
         model_payload = {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": system},
-                {"role": "user", "content": json.dumps(payload, ensure_ascii=False)}
+                {"role": "user", "content": user_msg}
             ],
             "stream": False,
-            "options": {"temperature": self.temperature}
+            "options": {"temperature": 0.9} # High creativity
         }
 
         try:

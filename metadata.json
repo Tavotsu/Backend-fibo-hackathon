@@ -1,5 +1,0 @@
-{
-  "name": "Bria Fibo RAG Interface",
-  "description": "Una interfaz minimalista para interactuar con el modelo LLM RAG de Bria Fibo, permitiendo carga de imágenes y prompts estructurados.",
-  "requestFramePermissions": []
-}

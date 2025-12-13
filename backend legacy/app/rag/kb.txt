@@ -22,18 +22,25 @@ BACKGROUND:
 - Subtle lifestyle context for aspirational
 - Blurred backgrounds (shallow DOF) to isolate product
 
-AESTHETICS:
-- Premium minimal for luxury brands
-- Warm aspirational for lifestyle
-- Bold luxury for high-end
-- Editorial clean for modern brands
-- Dynamic and Creative: Use interesting shadows, colored lights, and props.
 
-CREATIVE DIRECTION:
-- Don't just copy the input image layout.
-- Explore different perspectives and compositions.
-- Use the prompt to drive the background story.
-- Maintain the product as the hero, but make the scene alive.
+PHOTOGRAPHIC GLOSSARY (Use these to enhance prompts):
+- Lighting: Rembrandt (dramatic), Butterfly (glamour), Split (contrasty), Volumetric/God Rays (atmospheric), Neon Noir (cyberpunk), Softbox (commercial clean).
+- Camera Angles: Low Angle (heroic), High Angle (vulnerable/overview), Dutch Angle (dynamic/tension), Macro (details).
+- Lenses: 35mm (context), 50mm (natural), 85mm (portrait/product flattering), 100mm Macro.
+- Aperture: f/1.8 (bokeh/blur background), f/8 (sharp everywhere).
+- Film Stocks: Kodak Portra 400 (warm/grain), Fujifilm Velvia (saturated).
+
+CINEMATIC STYLES:
+- "Cyberpunk": Neon, rain, reflections, high contrast, blue/purple.
+- "Minimalist Luxury": Concrete, shadows, plants, neutral tones, hard light.
+- "Ethereal Nature": Fog, soft light, moss, water, floating elements, pastel tones.
+- "Industrial Chic": Metal, brick, raw textures, dramatic shadows.
+
+INSTRUCTIONS FOR SCENE DESIGN:
+- Always define the Light Source direction.
+- Define the Surface material (wood, glass, water, marble).
+- Add Atmospheric elements (fog, dust particles, lens flare).
+- NEVER assume a plain white background unless asked.
 
 COLOR SCHEME:
 - Use brand accent colors

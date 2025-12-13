@@ -1,0 +1,100 @@
+{
+  "plan_id": "plan_c04bbc5c24",
+  "base_seed": 2077531913,
+  "prompt": "haz que parezca peru",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 2077531913,
+      "structured_prompt": {
+        "short_description": "A breathtaking landscape of the Peruvian Andes at sunset, featuring majestic snow-capped mountains reflecting in a serene high-altitude lake. The sky is ablaze with vibrant hues of orange, pink, and purple, casting a warm glow over the rugged terrain. In the foreground, a traditional Peruvian woman in colorful attire tends to a small herd of alpacas, adding a cultural element to the natural grandeur.",
+        "objects": [
+          {
+            "description": "A traditional Peruvian woman, likely indigenous, with dark hair and a warm, gentle expression. She is focused on her alpacas.",
+            "location": "bottom-left foreground",
+            "relationship": "She is tending to the alpacas, guiding them gently.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Human figure, dressed in vibrant, multi-colored traditional Peruvian clothing.",
+            "texture": "Woven fabrics, soft wool.",
+            "appearance_details": "Wearing a 'montera' (traditional hat) and a 'manta' (shawl) with intricate patterns.",
+            "pose": "Standing, slightly bent over, with hands gently extended towards the alpacas.",
+            "expression": "Calm, serene, and focused.",
+            "clothing": "Colorful woven poncho, skirt, and traditional hat.",
+            "action": "Tending to alpacas.",
+            "gender": "Female",
+            "skin_tone_and_texture": "Medium olive skin tone, weathered by sun and wind.",
+            "orientation": "Facing slightly right, towards the alpacas."
+          },
+          {
+            "description": "A small herd of alpacas, with soft, fluffy wool, grazing peacefully near the lake's edge.",
+            "location": "center foreground",
+            "relationship": "They are being herded by the woman and are part of the natural landscape.",
+            "relative_size": "small to medium within frame",
+            "shape_and_color": "Varying shades of white, brown, and black, with characteristic long necks and fluffy bodies.",
+            "texture": "Extremely soft, dense wool.",
+            "appearance_details": "Some have small, decorative tassels on their ears.",
+            "number_of_objects": 3,
+            "pose": "Grazing, standing, and one is looking towards the viewer.",
+            "expression": "Calm and docile.",
+            "action": "Grazing and resting.",
+            "orientation": "Varied, some facing left, some right, one towards the viewer."
+          },
+          {
+            "description": "Jagged, snow-capped peaks of the Andes mountains, reflecting the warm light of the sunset.",
+            "location": "background",
+            "relationship": "They form the dominant natural backdrop for the scene.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular, pointed shapes, predominantly dark grey and white with orange and pink highlights.",
+            "texture": "Rocky, icy, and rugged.",
+            "appearance_details": "Visible snow lines and sharp ridges.",
+            "orientation": "Upright, forming a horizontal range."
+          },
+          {
+            "description": "A calm, reflective high-altitude lake, mirroring the vibrant sky and mountains.",
+            "location": "midground to foreground",
+            "relationship": "It reflects the sky and mountains, creating a sense of depth and symmetry.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Expansive, flat surface, reflecting orange, pink, and blue.",
+            "texture": "Smooth, glassy water.",
+            "appearance_details": "Slight ripples near the shore.",
+            "orientation": "Horizontal surface."
+          },
+          {
+            "description": "Dark, rugged rocks partially submerged in the lake and along the shoreline.",
+            "location": "bottom foreground",
+            "relationship": "They provide a natural anchor point in the composition and break the water's surface.",
+            "relative_size": "small to medium",
+            "shape_and_color": "Irregular, dark brown and black shapes.",
+            "texture": "Rough, wet stone.",
+            "appearance_details": "Some are covered in moss or algae.",
+            "number_of_objects": 3,
+            "orientation": "Varied, some partially submerged, others on the shore."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Side-lit from the setting sun, casting warm light across the mountains and foreground.",
+          "shadows": "Long, soft shadows extending from the mountains and foreground elements, adding depth and drama."
+        },
+        "aesthetics": {
+          "composition": "Wide landscape shot, with the mountains forming a strong horizontal line across the upper half and their reflections in the lower half. The woman and alpacas are positioned using the rule of thirds.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus throughout the entire scene.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Wide-angle, to encompass the vastness of the landscape."
+        },
+        "style_medium": "photograph",
+        "context": "This is a travel photography image intended to showcase the natural beauty and cultural heritage of the Peruvian Andes, suitable for a tourism brochure or a nature magazine.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 18:49:26.285792"
+}

@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_2eaf4b3210",
+  "base_seed": 1285321442,
+  "prompt": "dame una version recolorizada de esta misma imagen\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1285321442,
+      "structured_prompt": {
+        "short_description": "A recolored split portrait of two stylized anime-like characters, each occupying one half of the frame. The left character features warm, earthy tones with green hair and brown eyes, while the right character is depicted with cool, ethereal colors, featuring light blue hair and blue eyes. Both characters maintain their distinct facial markings and intense expressions, creating a contrasting yet harmonious visual.",
+        "objects": [
+          {
+            "description": "The left half of a stylized character's face, featuring green hair with sharp, angular strands and a determined expression. The eye is brown with a dark pupil, and there are distinct facial markings under the eye and on the cheek, rendered in a darker shade of green. A small, subtle scar or marking is visible on the lower lip.",
+            "location": "left half of the frame",
+            "relationship": "Part of a split portrait, contrasting with the character on the right.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Angular shapes, dominant green and brown tones.",
+            "texture": "Smooth, graphic lines.",
+            "appearance_details": "Stylized anime aesthetic with sharp details.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Determined, intense.",
+            "clothing": "Partial view of dark clothing, possibly a collar.",
+            "action": "None",
+            "gender": "Ambiguous, leaning masculine.",
+            "skin_tone_and_texture": "Light tan, smooth.",
+            "orientation": "Upright"
+          },
+          {
+            "description": "The right half of a stylized character's face, featuring light blue hair with sharp, angular strands and an intense, focused expression. The eye is blue with a dark pupil, and there are distinct facial markings under the eye and on the cheek, rendered in a darker shade of blue. A small, subtle scar or marking is visible on the lower lip.",
+            "location": "right half of the frame",
+            "relationship": "Part of a split portrait, contrasting with the character on the left.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Angular shapes, dominant light blue and blue tones.",
+            "texture": "Smooth, graphic lines.",
+            "appearance_details": "Stylized anime aesthetic with sharp details.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Intense, focused.",
+            "clothing": "Partial view of light-colored clothing, possibly a collar.",
+            "action": "None",
+            "gender": "Ambiguous, leaning masculine.",
+            "skin_tone_and_texture": "Pale, smooth.",
+            "orientation": "Upright"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit, illuminating both faces equally.",
+          "shadows": "Minimal, soft shadows used for depth and definition within the character designs, not cast by external light sources."
+        },
+        "aesthetics": {
+          "composition": "Symmetrical split portrait, centered, with both characters' faces filling the majority of the frame.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on both subjects",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "digital illustration",
+        "context": "This is a concept for a stylized character portrait, possibly for a game, anime, or graphic novel, emphasizing contrasting personalities or elements within a single entity.",
+        "artistic_style": "anime, graphic, stylized"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 16:19:47.233442"
+}

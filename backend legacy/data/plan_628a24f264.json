@@ -1,0 +1,70 @@
+{
+  "plan_id": "plan_628a24f264",
+  "base_seed": 1060338328,
+  "prompt": "dame mas paisajes",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1060338328,
+      "structured_prompt": {
+        "short_description": "A breathtaking panoramic landscape featuring a majestic mountain range with snow-capped peaks reflecting in a calm, pristine lake during a vibrant sunset. The sky is painted with fiery oranges, deep reds, and soft purples, creating a dramatic and awe-inspiring atmosphere. The foreground includes dark, rugged rocks partially submerged in the water, adding depth and texture to the scene.",
+        "objects": [
+          {
+            "description": "A vast mountain range with several prominent peaks, some of which are covered in glistening snow. The mountains show rugged, rocky textures and varying shades of dark grey and brown.",
+            "location": "midground, spanning horizontally across the frame",
+            "relationship": "The primary subject of the image, reflecting in the lake below and silhouetted against the colorful sky.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular, jagged peaks; dark grey, brown, and white (snow)",
+            "texture": "rough, rocky, icy",
+            "appearance_details": "Snow caps are illuminated by the sunset colors.",
+            "orientation": "horizontal alignment"
+          },
+          {
+            "description": "A calm, reflective lake that mirrors the mountains and the vibrant sunset sky above. The water surface is mostly still, creating clear reflections.",
+            "location": "foreground to midground",
+            "relationship": "Reflects the mountains and sky, creating a sense of symmetry and depth.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Expansive, dark blue-grey water with orange and red reflections",
+            "texture": "smooth, glassy",
+            "appearance_details": "The reflections are almost as vivid as the actual sky and mountains.",
+            "orientation": "horizontal plane"
+          },
+          {
+            "description": "Several dark, rugged rocks, partially submerged in the lake, providing a natural anchor in the foreground.",
+            "location": "bottom-right foreground and bottom-left foreground",
+            "relationship": "Adds foreground interest and scale to the vast landscape.",
+            "relative_size": "small to medium",
+            "shape_and_color": "Irregular, dark brown to black shapes",
+            "texture": "rough, weathered",
+            "appearance_details": "Some rocks have wet surfaces, reflecting a subtle sheen.",
+            "number_of_objects": 3,
+            "orientation": "lying on their sides"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "diffuse, coming from behind the mountains and reflecting off the clouds",
+          "shadows": "Long, soft shadows cast by the mountains across the landscape, with minimal shadows on the illuminated peaks."
+        },
+        "aesthetics": {
+          "composition": "symmetrical with strong horizontal lines, leading the eye across the landscape and into the reflections",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "sharp focus throughout the scene, from foreground rocks to distant mountains",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "wide-angle"
+        },
+        "style_medium": "photograph",
+        "context": "This is a landscape photograph intended to capture the natural beauty and dramatic light of a mountain and lake scene at sunset, suitable for travel photography, nature calendars, or fine art prints.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 18:48:37.868577"
+}

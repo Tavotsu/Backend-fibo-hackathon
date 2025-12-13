@@ -1,0 +1,55 @@
+{
+  "plan_id": "plan_0bd72ccdbd",
+  "base_seed": 1435518132,
+  "prompt": "Dame un juguete de este personaje\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1435518132,
+      "structured_prompt": {
+        "short_description": "A stylized toy figure of a character with a square, LED-faced head, wearing a blue jacket and jeans. The toy is posed with one arm raised, making a rude gesture, and is displayed on a clean, minimalist shelf against a soft, light blue wall. The scene is designed to showcase the toy as a collectible item.",
+        "objects": [
+          {
+            "description": "A collectible toy figure, approximately 10 inches tall, replicating the character from the reference image. It has a square head with an LED-like display showing an angry, pixelated face with white eyes and a jagged mouth. The body is wearing a miniature version of the blue bomber jacket with a 'WATT' patch and blue jeans. The right arm is raised, with the middle finger extended.",
+            "location": "center",
+            "relationship": "The main subject of the image, standing on a white shelf.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Rectangular head, humanoid body, predominantly blue and black with white LED details.",
+            "texture": "Smooth plastic with some textured details on the jacket and jeans.",
+            "appearance_details": "The LED face is illuminated with a soft white glow, highlighting the angry expression. The jacket has realistic fabric folds.",
+            "pose": "Standing upright, right arm raised with middle finger extended.",
+            "expression": "Angry, pixelated face on the LED display.",
+            "clothing": "Miniature blue bomber jacket with a 'WATT' patch and blue jeans.",
+            "action": "Making a rude gesture.",
+            "gender": "Androgynous (toy figure)",
+            "skin_tone_and_texture": "Not applicable (toy)",
+            "orientation": "Facing slightly towards the viewer's left."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit with subtle fill light from the sides",
+          "shadows": "Soft, diffused shadows cast behind the toy on the wall and shelf, indicating a gentle light source."
+        },
+        "aesthetics": {
+          "composition": "Centered composition, showcasing the toy as a product. The toy occupies the central vertical axis.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the toy figure.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph of a collectible toy figure, intended for online retail or a collector's catalog.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 18:50:32.697273"
+}
