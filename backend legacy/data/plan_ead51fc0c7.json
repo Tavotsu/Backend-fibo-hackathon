@@ -1,0 +1,90 @@
+{
+  "plan_id": "plan_ead51fc0c7",
+  "base_seed": 1075429721,
+  "prompt": "Necesito que me des un juguete de esta imagen",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1075429721,
+      "structured_prompt": {
+        "short_description": "A whimsical toy butterfly, inspired by the intricate details of a real butterfly, designed with soft, child-friendly materials and vibrant colors. It is depicted in a playful setting, perhaps on a child's bed or a soft playmat, ready for imaginative play.",
+        "objects": [
+          {
+            "description": "A plush toy butterfly, with soft, fabric wings that mimic the detailed patterns of a real butterfly but in a simplified, colorful manner. The body is soft and rounded, suitable for small hands to grasp.",
+            "location": "center",
+            "relationship": "The main subject of the image, positioned to be easily picked up and played with.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Butterfly shape, with wings featuring a mix of bright primary and secondary colors like blue, yellow, and red, with black outlines.",
+            "texture": "Soft, plush fabric for the body and wings, possibly with some embroidered details.",
+            "appearance_details": "Antennae are soft and flexible, made from felt or similar material. The eyes are embroidered, giving it a friendly expression.",
+            "orientation": "Slightly angled as if in mid-flight or resting gently, with wings spread open."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Overhead, creating gentle illumination",
+          "shadows": "Soft, subtle shadows beneath the toy, indicating its three-dimensionality without being harsh."
+        },
+        "aesthetics": {
+          "composition": "Centered, with the toy butterfly as the clear focal point, inviting interaction.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subject",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a children's toy catalog or an e-commerce website, showcasing a new plush butterfly toy.",
+        "artistic_style": "realistic"
+      }
+    },
+    {
+      "index": 1,
+      "seed": 1075429844,
+      "structured_prompt": {
+        "short_description": "A whimsical toy butterfly, inspired by the intricate details of a real butterfly, designed with soft, child-friendly materials and vibrant colors. It is depicted in a playful setting, perhaps on a child's bed or a soft playmat, ready for imaginative play.",
+        "objects": [
+          {
+            "description": "A plush toy butterfly, with soft, fabric wings that mimic the detailed patterns of a real butterfly but in a simplified, colorful manner. The body is soft and rounded, suitable for small hands to grasp.",
+            "location": "center",
+            "relationship": "The main subject of the image, positioned to be easily picked up and played with.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Butterfly shape, with wings featuring a mix of bright primary and secondary colors like blue, yellow, and red, with black outlines.",
+            "texture": "Soft, plush fabric for the body and wings, possibly with some embroidered details.",
+            "appearance_details": "Antennae are soft and flexible, made from felt or similar material. The eyes are embroidered, giving it a friendly expression.",
+            "orientation": "Slightly angled as if in mid-flight or resting gently, with wings spread open."
+          }
+        ],
+        "background_setting": "subtle lifestyle scene (out-of-focus)",
+        "lighting": {
+          "conditions": "golden hour",
+          "direction": "Overhead, creating gentle illumination",
+          "shadows": "Soft, subtle shadows beneath the toy, indicating its three-dimensionality without being harsh."
+        },
+        "aesthetics": {
+          "composition": "Centered, with the toy butterfly as the clear focal point, inviting interaction.",
+          "color_scheme": "warm + brand accent",
+          "mood_atmosphere": "warm aspirational",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "medium",
+          "focus": "Sharp focus on subject",
+          "camera_angle": "three-quarter",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a children's toy catalog or an e-commerce website, showcasing a new plush butterfly toy.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 15:41:21.580724"
+}

@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_443ac00260",
+  "base_seed": 607330425,
+  "prompt": "make me a realistic version of this costumes",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 607330425,
+      "structured_prompt": {
+        "short_description": "A realistic split portrait of two distinct characters, one with an icy, serene demeanor and light blue hair, and the other with a fierce, intense expression and spiky red hair. The left side features a character with pale skin, intricate blue markings, and a calm yet powerful gaze. The right side showcases a character with rugged facial features, dark markings, and a hint of blood, conveying a more aggressive and battle-hardened persona. Both characters are depicted in a close-up, head-and-shoulders shot, emphasizing their contrasting personalities and visual styles.",
+        "objects": [
+          {
+            "description": "The left half of a human-like character's face, characterized by smooth, pale skin with intricate light blue, almost glowing, markings around the eye and forehead. The eye is a striking light blue with a subtle, almost crystalline texture, conveying a sense of calm power. Light blue hair, styled in soft, flowing waves, frames the face.",
+            "location": "left half of the frame, center",
+            "relationship": "Part of a split portrait, contrasting with the right character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Human face, pale skin with blue accents",
+            "texture": "Smooth skin, soft hair, crystalline eye texture",
+            "appearance_details": "Subtle glow around the blue markings, delicate facial features.",
+            "pose": "Head turned slightly towards the viewer, direct gaze.",
+            "expression": "Serene, calm, yet powerful and observant.",
+            "clothing": "Dark, simple garment visible at the shoulder, suggesting a practical or ceremonial attire.",
+            "action": "Looking forward",
+            "gender": "Androgynous, leaning feminine",
+            "skin_tone_and_texture": "Very pale, almost translucent skin with a smooth texture.",
+            "orientation": "Facing forward"
+          },
+          {
+            "description": "The right half of a human-like character's face, featuring a more rugged and intense appearance. The skin is slightly tanned and shows subtle scarring or rough texture, with dark, almost black, jagged markings around the eye and cheek. The eye is dark and piercing, conveying aggression and determination. Spiky, vibrant red hair stands out sharply, framing the face.",
+            "location": "right half of the frame, center",
+            "relationship": "Part of a split portrait, contrasting with the left character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Human face, slightly tanned skin with dark and red accents",
+            "texture": "Slightly rough skin, coarse hair, intense eye texture.",
+            "appearance_details": "A small trickle of blood near the mouth, suggesting recent conflict or a battle-hardened nature. Sharp, angular facial features.",
+            "pose": "Head turned slightly towards the viewer, direct, intense gaze.",
+            "expression": "Fierce, determined, slightly aggressive.",
+            "clothing": "Dark, utilitarian garment visible at the shoulder, suggesting combat wear.",
+            "action": "Looking forward",
+            "gender": "Androgynous, leaning masculine",
+            "skin_tone_and_texture": "Slightly tanned skin with a rugged texture.",
+            "orientation": "Facing forward"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Split lighting, with cool light illuminating the left character and warm, intense light on the right character, both from the front-side.",
+          "shadows": "Sharp, defined shadows emphasizing facial contours and adding to the dramatic mood."
+        },
+        "aesthetics": {
+          "composition": "Symmetrical split portrait, centered, close-up shot.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subjects' eyes and facial features.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Portrait lens (e.g., 50mm-85mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a concept for a character study or a promotional image for a fantasy or sci-fi series, showcasing two contrasting personalities or aspects of a single character.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:41:21.814634"
+}

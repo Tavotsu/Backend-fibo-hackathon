@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_033016dd3d",
+  "base_seed": 819759430,
+  "prompt": "rebuild this image using pixel art",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 819759430,
+      "structured_prompt": {
+        "short_description": "A pixel art rendition of two distinct character faces, split vertically down the middle. The left side features a character with light blue hair and skin, a serene expression, and a glowing blue eye. The right side shows a character with spiky red hair, a more intense or aggressive expression, and a dark eye with a scar-like marking below it. The overall composition is a stark contrast between cool and warm tones, representing a duality.",
+        "objects": [
+          {
+            "description": "The left half of a character's face, featuring light blue hair with subtle highlights, pale blue skin, and a large, expressive eye with a glowing blue pupil. There are circular markings on the cheek and forehead. The character appears calm and somewhat melancholic.",
+            "location": "left half of the frame, center",
+            "relationship": "Part of a dual portrait, contrasting with the right character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shapes, predominantly light blue and white with dark blue accents.",
+            "texture": "Smooth, pixelated.",
+            "appearance_details": "Stylized anime-like features, sharp lines, and distinct pixel blocks.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Serene, slightly sad.",
+            "clothing": "Dark collar visible at the bottom left.",
+            "action": "None",
+            "gender": "Ambiguous, leaning feminine.",
+            "skin_tone_and_texture": "Pale blue, smooth pixelated.",
+            "orientation": "Upright"
+          },
+          {
+            "description": "The right half of a character's face, characterized by spiky, dark red hair and pale skin. The eye is dark and intense, with a prominent black marking resembling a scar or tattoo below it. The expression is more stern or aggressive, with a hint of a snarl.",
+            "location": "right half of the frame, center",
+            "relationship": "Part of a dual portrait, contrasting with the left character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shapes, predominantly dark red, white, and black.",
+            "texture": "Rough, pixelated.",
+            "appearance_details": "Stylized anime-like features, sharp lines, and distinct pixel blocks, with a small red drip near the mouth.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Intense, stern, slightly aggressive.",
+            "clothing": "Dark collar visible at the bottom right.",
+            "action": "None",
+            "gender": "Ambiguous, leaning masculine.",
+            "skin_tone_and_texture": "Pale, smooth pixelated.",
+            "orientation": "Upright"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit.",
+          "shadows": "Minimal, stylized shadows used for depth within the pixel art style."
+        },
+        "aesthetics": {
+          "composition": "Symmetrical split composition, centered on the two faces.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subjects",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "pixel art",
+        "context": "This is a concept for a pixel art character portrait, possibly for a video game character selection screen or a profile icon, emphasizing contrasting personalities or elements.",
+        "artistic_style": "stylized, retro, graphic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:43:07.548938"
+}

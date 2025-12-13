@@ -1,0 +1,41 @@
+Brand Guidelines - Marketing Photography
+
+PRODUCT PRESENTATION:
+- Keep product centered and clearly visible
+- Maintain brand integrity (logo, colors, packaging)
+- Ensure label text is readable
+- Product should be hero of the shot
+
+LIGHTING:
+- Prefer soft, diffused lighting for premium look
+- Studio softbox, golden hour, or rim lighting
+- Avoid harsh shadows on product
+
+CAMERA ANGLES:
+- Eye-level: neutral, trustworthy
+- Three-quarter: dynamic, engaging
+- Top-down flat lay: editorial, modern
+- Low angle: bold, impactful
+
+BACKGROUND:
+- Clean, minimal for e-commerce
+- Subtle lifestyle context for aspirational
+- Blurred backgrounds (shallow DOF) to isolate product
+
+AESTHETICS:
+- Premium minimal for luxury brands
+- Warm aspirational for lifestyle
+- Bold luxury for high-end
+- Editorial clean for modern brands
+- Dynamic and Creative: Use interesting shadows, colored lights, and props.
+
+CREATIVE DIRECTION:
+- Don't just copy the input image layout.
+- Explore different perspectives and compositions.
+- Use the prompt to drive the background story.
+- Maintain the product as the hero, but make the scene alive.
+
+COLOR SCHEME:
+- Use brand accent colors
+- Neutral backgrounds with brand pops
+- Maintain brand color consistency

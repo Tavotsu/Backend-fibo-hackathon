@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_4ef108ba90",
+  "base_seed": 683842381,
+  "prompt": "necesito que me des un juguete de ambos personajes",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 683842381,
+      "structured_prompt": {
+        "short_description": "A pair of stylized plush toys, one representing a character with light blue hair and blue eyes, and the other a character with spiky red hair and dark eyes. They are designed in a chibi or super deformed style, emphasizing cuteness and softness, and are positioned side-by-side on a clean, minimalist surface, suggesting they are collectibles or merchandise.",
+        "objects": [
+          {
+            "description": "A plush toy designed in a chibi style, featuring light blue hair, large blue eyes with a lightning bolt detail, and a small, slightly open mouth. It has a soft, rounded body.",
+            "location": "left-center",
+            "relationship": "positioned next to the red-haired plush toy, facing forward",
+            "relative_size": "medium within frame",
+            "shape_and_color": "rounded, light blue and white",
+            "texture": "soft, plush fabric",
+            "appearance_details": "embroidered facial features, small white details on hair",
+            "pose": "sitting upright",
+            "expression": "neutral, slightly curious",
+            "clothing": "simple dark blue top, part of the plush design",
+            "action": "sitting",
+            "gender": "ambiguous, leaning feminine",
+            "skin_tone_and_texture": "light blue and white fabric",
+            "orientation": "upright, facing forward"
+          },
+          {
+            "description": "A plush toy designed in a chibi style, featuring spiky red hair, dark eyes with a sharp, intense gaze, and distinct black markings on its face. It has a soft, rounded body.",
+            "location": "right-center",
+            "relationship": "positioned next to the blue-haired plush toy, facing forward",
+            "relative_size": "medium within frame",
+            "shape_and_color": "rounded, red and white",
+            "texture": "soft, plush fabric",
+            "appearance_details": "embroidered facial features, black markings on face, small red detail under eye",
+            "pose": "sitting upright",
+            "expression": "serious, determined",
+            "clothing": "simple dark top, part of the plush design",
+            "action": "sitting",
+            "gender": "ambiguous, leaning masculine",
+            "skin_tone_and_texture": "white and light pink fabric",
+            "orientation": "upright, facing forward"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "front-lit with slight overhead diffusion",
+          "shadows": "subtle, soft shadows directly beneath the plush toys, indicating their placement on the surface"
+        },
+        "aesthetics": {
+          "composition": "centered, symmetrical arrangement of two objects",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "sharp focus on both plush toys",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "standard lens (e.g., 50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a concept for product photography of collectible plush toys, intended for an online store or merchandise catalog.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 15:48:18.216200"
+}

@@ -1,0 +1,257 @@
+{
+  "plan_id": "plan_d3e5c8e775",
+  "base_seed": 1513322180,
+  "prompt": "I need a toy product for this characters",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1513322180,
+      "structured_prompt": {
+        "short_description": "A toy product featuring two distinct character figures, one with light blue hair and features, and the other with red hair and more aggressive features. The figures are designed to be collectible and poseable, presented in a dynamic action pose on a display base, ready for play or display. The packaging is visible in the background, hinting at the product's branding.",
+        "objects": [
+          {
+            "description": "A stylized action figure with light blue hair, a serene yet determined expression, and intricate markings on its face. It has a sleek, somewhat futuristic design with smooth, sculpted lines.",
+            "location": "left foreground",
+            "relationship": "Part of a duo, positioned to complement the other figure.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, predominantly light blue and white with dark blue accents.",
+            "texture": "Smooth, matte plastic with some glossy elements.",
+            "appearance_details": "Features glowing blue eyes and subtle energy-like patterns on its body.",
+            "pose": "Dynamic, mid-action pose, possibly preparing for an attack or defense.",
+            "expression": "Calm and focused, with a hint of intensity.",
+            "clothing": "Sculpted armor-like elements integrated into the figure's design, dark blue and black.",
+            "action": "Engaged in a combat stance.",
+            "gender": "Androgynous, leaning feminine.",
+            "skin_tone_and_texture": "Pale, almost white, with a smooth, plastic texture.",
+            "orientation": "Facing slightly right, engaging with the other figure."
+          },
+          {
+            "description": "A stylized action figure with spiky red hair, a fierce and aggressive expression, and prominent facial markings. Its design is more rugged and angular compared to the blue figure.",
+            "location": "right foreground",
+            "relationship": "Part of a duo, positioned to contrast and interact with the other figure.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, predominantly red and white with black accents.",
+            "texture": "Slightly textured plastic, suggesting a more rugged feel.",
+            "appearance_details": "Features sharp, intense eyes and scar-like markings on its face.",
+            "pose": "Dynamic, aggressive action pose, ready to strike.",
+            "expression": "Fierce and determined, with a hint of anger.",
+            "clothing": "Sculpted, battle-worn attire, dark red and black.",
+            "action": "Engaged in a combat stance.",
+            "gender": "Androgynous, leaning masculine.",
+            "skin_tone_and_texture": "Pale, almost white, with a smooth, plastic texture.",
+            "orientation": "Facing slightly left, engaging with the other figure."
+          },
+          {
+            "description": "A display base for the action figures, designed to hold them in their dynamic poses. It features a textured surface and possibly some thematic elements.",
+            "location": "bottom center",
+            "relationship": "Supports both action figures.",
+            "relative_size": "medium",
+            "shape_and_color": "Flat, rectangular base, dark grey or black.",
+            "texture": "Rough, metallic or rocky texture.",
+            "appearance_details": "Subtle energy lines or cracks on the surface.",
+            "orientation": "Horizontal"
+          },
+          {
+            "description": "The product packaging for the action figures, visible behind the figures. It features vibrant artwork and branding.",
+            "location": "background",
+            "relationship": "Serves as the backdrop and context for the product.",
+            "relative_size": "large",
+            "shape_and_color": "Rectangular box, multi-colored with character art.",
+            "texture": "Smooth, glossy cardboard.",
+            "appearance_details": "Prominent product logo and character illustrations.",
+            "orientation": "Vertical"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit with soft fill light from the sides.",
+          "shadows": "Soft, subtle shadows cast beneath the figures, indicating depth without harshness."
+        },
+        "aesthetics": {
+          "composition": "Centered composition, with the two figures forming a symmetrical yet dynamic visual balance. The figures are in a medium shot, showcasing their details and interaction.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subject (both action figures).",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm), suitable for product photography."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a collectible action figure set, intended for marketing materials such as online listings, packaging, or promotional posters.",
+        "artistic_style": "realistic"
+      }
+    },
+    {
+      "index": 1,
+      "seed": 1513322303,
+      "structured_prompt": {
+        "short_description": "A toy product featuring two distinct character figures, one with light blue hair and features, and the other with red hair and more aggressive features. The figures are designed to be collectible and poseable, presented in a dynamic action pose on a display base, ready for play or display. The packaging is visible in the background, hinting at the product's branding.",
+        "objects": [
+          {
+            "description": "A stylized action figure with light blue hair, a serene yet determined expression, and intricate markings on its face. It has a sleek, somewhat futuristic design with smooth, sculpted lines.",
+            "location": "left foreground",
+            "relationship": "Part of a duo, positioned to complement the other figure.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, predominantly light blue and white with dark blue accents.",
+            "texture": "Smooth, matte plastic with some glossy elements.",
+            "appearance_details": "Features glowing blue eyes and subtle energy-like patterns on its body.",
+            "pose": "Dynamic, mid-action pose, possibly preparing for an attack or defense.",
+            "expression": "Calm and focused, with a hint of intensity.",
+            "clothing": "Sculpted armor-like elements integrated into the figure's design, dark blue and black.",
+            "action": "Engaged in a combat stance.",
+            "gender": "Androgynous, leaning feminine.",
+            "skin_tone_and_texture": "Pale, almost white, with a smooth, plastic texture.",
+            "orientation": "Facing slightly right, engaging with the other figure."
+          },
+          {
+            "description": "A stylized action figure with spiky red hair, a fierce and aggressive expression, and prominent facial markings. Its design is more rugged and angular compared to the blue figure.",
+            "location": "right foreground",
+            "relationship": "Part of a duo, positioned to contrast and interact with the other figure.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, predominantly red and white with black accents.",
+            "texture": "Slightly textured plastic, suggesting a more rugged feel.",
+            "appearance_details": "Features sharp, intense eyes and scar-like markings on its face.",
+            "pose": "Dynamic, aggressive action pose, ready to strike.",
+            "expression": "Fierce and determined, with a hint of anger.",
+            "clothing": "Sculpted, battle-worn attire, dark red and black.",
+            "action": "Engaged in a combat stance.",
+            "gender": "Androgynous, leaning masculine.",
+            "skin_tone_and_texture": "Pale, almost white, with a smooth, plastic texture.",
+            "orientation": "Facing slightly left, engaging with the other figure."
+          },
+          {
+            "description": "A display base for the action figures, designed to hold them in their dynamic poses. It features a textured surface and possibly some thematic elements.",
+            "location": "bottom center",
+            "relationship": "Supports both action figures.",
+            "relative_size": "medium",
+            "shape_and_color": "Flat, rectangular base, dark grey or black.",
+            "texture": "Rough, metallic or rocky texture.",
+            "appearance_details": "Subtle energy lines or cracks on the surface.",
+            "orientation": "Horizontal"
+          },
+          {
+            "description": "The product packaging for the action figures, visible behind the figures. It features vibrant artwork and branding.",
+            "location": "background",
+            "relationship": "Serves as the backdrop and context for the product.",
+            "relative_size": "large",
+            "shape_and_color": "Rectangular box, multi-colored with character art.",
+            "texture": "Smooth, glossy cardboard.",
+            "appearance_details": "Prominent product logo and character illustrations.",
+            "orientation": "Vertical"
+          }
+        ],
+        "background_setting": "subtle lifestyle scene (out-of-focus)",
+        "lighting": {
+          "conditions": "golden hour",
+          "direction": "Front-lit with soft fill light from the sides.",
+          "shadows": "Soft, subtle shadows cast beneath the figures, indicating depth without harshness."
+        },
+        "aesthetics": {
+          "composition": "Centered composition, with the two figures forming a symmetrical yet dynamic visual balance. The figures are in a medium shot, showcasing their details and interaction.",
+          "color_scheme": "warm + brand accent",
+          "mood_atmosphere": "warm aspirational",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "medium",
+          "focus": "Sharp focus on subject (both action figures).",
+          "camera_angle": "three-quarter",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm), suitable for product photography."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a collectible action figure set, intended for marketing materials such as online listings, packaging, or promotional posters.",
+        "artistic_style": "realistic"
+      }
+    },
+    {
+      "index": 2,
+      "seed": 1513322426,
+      "structured_prompt": {
+        "short_description": "A toy product featuring two distinct character figures, one with light blue hair and features, and the other with red hair and more aggressive features. The figures are designed to be collectible and poseable, presented in a dynamic action pose on a display base, ready for play or display. The packaging is visible in the background, hinting at the product's branding.",
+        "objects": [
+          {
+            "description": "A stylized action figure with light blue hair, a serene yet determined expression, and intricate markings on its face. It has a sleek, somewhat futuristic design with smooth, sculpted lines.",
+            "location": "left foreground",
+            "relationship": "Part of a duo, positioned to complement the other figure.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, predominantly light blue and white with dark blue accents.",
+            "texture": "Smooth, matte plastic with some glossy elements.",
+            "appearance_details": "Features glowing blue eyes and subtle energy-like patterns on its body.",
+            "pose": "Dynamic, mid-action pose, possibly preparing for an attack or defense.",
+            "expression": "Calm and focused, with a hint of intensity.",
+            "clothing": "Sculpted armor-like elements integrated into the figure's design, dark blue and black.",
+            "action": "Engaged in a combat stance.",
+            "gender": "Androgynous, leaning feminine.",
+            "skin_tone_and_texture": "Pale, almost white, with a smooth, plastic texture.",
+            "orientation": "Facing slightly right, engaging with the other figure."
+          },
+          {
+            "description": "A stylized action figure with spiky red hair, a fierce and aggressive expression, and prominent facial markings. Its design is more rugged and angular compared to the blue figure.",
+            "location": "right foreground",
+            "relationship": "Part of a duo, positioned to contrast and interact with the other figure.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, predominantly red and white with black accents.",
+            "texture": "Slightly textured plastic, suggesting a more rugged feel.",
+            "appearance_details": "Features sharp, intense eyes and scar-like markings on its face.",
+            "pose": "Dynamic, aggressive action pose, ready to strike.",
+            "expression": "Fierce and determined, with a hint of anger.",
+            "clothing": "Sculpted, battle-worn attire, dark red and black.",
+            "action": "Engaged in a combat stance.",
+            "gender": "Androgynous, leaning masculine.",
+            "skin_tone_and_texture": "Pale, almost white, with a smooth, plastic texture.",
+            "orientation": "Facing slightly left, engaging with the other figure."
+          },
+          {
+            "description": "A display base for the action figures, designed to hold them in their dynamic poses. It features a textured surface and possibly some thematic elements.",
+            "location": "bottom center",
+            "relationship": "Supports both action figures.",
+            "relative_size": "medium",
+            "shape_and_color": "Flat, rectangular base, dark grey or black.",
+            "texture": "Rough, metallic or rocky texture.",
+            "appearance_details": "Subtle energy lines or cracks on the surface.",
+            "orientation": "Horizontal"
+          },
+          {
+            "description": "The product packaging for the action figures, visible behind the figures. It features vibrant artwork and branding.",
+            "location": "background",
+            "relationship": "Serves as the backdrop and context for the product.",
+            "relative_size": "large",
+            "shape_and_color": "Rectangular box, multi-colored with character art.",
+            "texture": "Smooth, glossy cardboard.",
+            "appearance_details": "Prominent product logo and character illustrations.",
+            "orientation": "Vertical"
+          }
+        ],
+        "background_setting": "dark premium backdrop",
+        "lighting": {
+          "conditions": "dramatic rim light",
+          "direction": "Front-lit with soft fill light from the sides.",
+          "shadows": "Soft, subtle shadows cast beneath the figures, indicating depth without harshness."
+        },
+        "aesthetics": {
+          "composition": "Centered composition, with the two figures forming a symmetrical yet dynamic visual balance. The figures are in a medium shot, showcasing their details and interaction.",
+          "color_scheme": "dark + brand accent",
+          "mood_atmosphere": "bold luxury",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subject (both action figures).",
+          "camera_angle": "low angle",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm), suitable for product photography."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a collectible action figure set, intended for marketing materials such as online listings, packaging, or promotional posters.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:38:38.861390"
+}

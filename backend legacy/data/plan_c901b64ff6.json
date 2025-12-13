@@ -1,0 +1,75 @@
+{
+  "plan_id": "plan_c901b64ff6",
+  "base_seed": 1596558785,
+  "prompt": "make a toy for this image, is a android, semihuman called zero for the videogames series megaman\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1596558785,
+      "structured_prompt": {
+        "short_description": "A highly detailed collectible toy of Zero from the Mega Man video game series, captured in a dynamic pose as if mid-action. The toy stands on a stylized base resembling a rocky, battle-scarred terrain, with a defeated enemy robot partially visible. The background suggests a dramatic, expansive sky, enhancing the heroic feel of the figure.",
+        "objects": [
+          {
+            "description": "A meticulously crafted action figure of Zero, an android character from the Mega Man series. He is predominantly red, black, and white with gold accents, featuring a sleek, armored design. His long, flowing blonde hair-like energy strands are prominent.",
+            "location": "center",
+            "relationship": "main subject, standing triumphantly over a defeated enemy",
+            "relative_size": "large within frame",
+            "shape_and_color": "anthropomorphic robot, red, black, white, and gold",
+            "texture": "smooth, metallic, with some matte sections",
+            "appearance_details": "Glowing green gem on his forehead, a buster cannon on his right arm, and a detailed, segmented armor design.",
+            "pose": "Dynamic, right arm extended forward with fingers slightly curled, left leg bent and raised, right leg firmly planted on the base.",
+            "expression": "Determined, implied by the forward-leaning posture and focused gaze through the visor.",
+            "clothing": "Armored suit (integral to his design)",
+            "action": "Posing heroically, as if having just completed an attack or preparing for one.",
+            "gender": "masculine (robot)",
+            "skin_tone_and_texture": "metallic, smooth",
+            "orientation": "Facing slightly to the right, body angled towards the viewer."
+          },
+          {
+            "description": "A stylized base for the action figure, designed to look like rugged, rocky terrain with battle damage. It is textured and uneven, providing a stable platform for the dynamic pose.",
+            "location": "bottom-center",
+            "relationship": "supports the main Zero figure and incorporates the defeated enemy",
+            "relative_size": "medium",
+            "shape_and_color": "irregular, earthy browns and grays",
+            "texture": "rough, rocky",
+            "appearance_details": "Cracks and debris suggesting a recent battle.",
+            "orientation": "Horizontal, forming the ground plane."
+          },
+          {
+            "description": "Part of a defeated enemy robot, likely a 'Maverick' from the Mega Man series, lying partially obscured on the base. It is blue and white with red accents, showing signs of damage.",
+            "location": "bottom-left foreground",
+            "relationship": "defeated by Zero, contributing to the heroic narrative",
+            "relative_size": "small to medium",
+            "shape_and_color": "fragmented robot parts, blue, white, and red",
+            "texture": "smooth, metallic, with visible damage",
+            "appearance_details": "One large red eye-like component is visible, along with a blue arm section.",
+            "orientation": "Lying on its side, partially broken."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Backlit and side-lit from the right, creating strong highlights on Zero's armor.",
+          "shadows": "Defined shadows on the left side of Zero and beneath the figure, adding depth and contrast."
+        },
+        "aesthetics": {
+          "composition": "Dynamic, low-angle shot emphasizing Zero's power and dominance. The figure is slightly off-center, following the rule of thirds.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the Zero action figure.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph of a high-quality collectible action figure, intended for promotional materials, packaging, or display on a collector's website. It aims to showcase the figure's detail and dynamic pose.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:55:10.137564"
+}

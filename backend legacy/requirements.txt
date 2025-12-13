@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+python-dotenv
+pandas
+requests
+httpx
+python-multipart
+openai
+motor
+beanie
+boto3
+pydantic-settings
+ollama
