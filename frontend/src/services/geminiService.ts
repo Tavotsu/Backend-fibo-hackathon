@@ -1,7 +1,7 @@
 import { BriaFiboPayload, GeneratedImage, JobStatusResponse } from "../types";
 
 // Backend URL - cambiar a ngrok cuando se despliegue
-const API_BASE_URL = "http://localhost:8001";
+const API_BASE_URL = "http://localhost:8000";
 
 /**
  * Utility to convert Base64 string to Blob for FormData

@@ -60,6 +60,17 @@ async def generate_with_fibo(
                     "structured_prompt": result.get("structured_prompt"),
                     "status": result.get("status")
                 }
+            elif response.status_code == 403:
+                logger.warning("Bria API 403 Forbidden (Quota Exceeded). Using Fallback Mock.")
+                # Fallback mock premium para "dejarlo fino"
+                # Usamos una imagen de alta calidad de Unsplash (Technology/Abstract)
+                premium_mock_image = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop"
+                
+                return {
+                    "image_url": premium_mock_image,
+                    "structured_prompt": f"⚠️ MODO DEMO: {bria_params.prompt} (Límite de cuota API alcanzado - Imagen Referencial)",
+                    "status": "COMPLETED"
+                }
             else:
                 error_msg = f"Error FIBO API: {response.status_code} - {response.text}"
                 logger.error(error_msg)
