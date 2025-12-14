@@ -1,7 +1,12 @@
 import asyncio
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
-from supabase import create_client, Client
+try:
+    from supabase import create_client, Client
+except ImportError:
+    create_client = None
+    print("⚠️ Supabase library not found or broken (check websockets version).")
+
 from dotenv import load_dotenv
 
 # Load env vars
