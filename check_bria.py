@@ -9,13 +9,11 @@ async def check_bria():
     print("--- Testing Bria AI Connection ---")
     
     api_key = os.getenv("BRIA_API_KEY")
-    # Based on search results: https://engine.prod.bria-api.com
-    base_url = "https://engine.prod.bria-api.com/v1" 
-    endpoint = "/text-to-image/fast/1.0"
+    # Based on search results: V2 is more standard now
+    base_url = "https://engine.prod.bria-api.com/v2" 
+    endpoint = "/image/generate"
     
-    # Try using the specific endpoint from code if possible, or a generic test
-    # Let's try a simple generation
-    
+    # Simulate "inspire" mode payload (Image + Prompt)
     if not api_key:
         print("❌ FAIL: BRIA_API_KEY is missing in .env")
         return
@@ -26,11 +24,13 @@ async def check_bria():
         "api_token": api_key,
         "Content-Type": "application/json"
     }
-    
+
+    # Using a placeholder image for testing
     payload = {
-        "prompt": "A cute cat",
         "num_results": 1,
-        "sync": True
+        "sync": True,
+        "prompt": "A beautiful landscape version of this image",
+        "images": ["https://picsum.photos/512/512"] # Public URL required by Bria V2
     }
     
     url = f"{base_url}{endpoint}"

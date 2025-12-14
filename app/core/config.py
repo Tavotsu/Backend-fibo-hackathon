@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     
     # Bria AI API Configuration
     BRIA_API_KEY: str = os.getenv("BRIA_API_KEY", "")
-    BRIA_API_URL: str = "https://engine.prod.bria-api.com/v1"
-    BRIA_IMAGE_GENERATE_ENDPOINT: str = "/v2/image/generate"
+    BRIA_API_URL: str = "https://engine.prod.bria-api.com/v2"
+    BRIA_IMAGE_GENERATE_ENDPOINT: str = "/image/generate"
     BRIA_STRUCTURED_PROMPT_ENDPOINT: str = "/v2/structured_prompt/generate"
     
     # OpenAI para agente LLM (opcional, alternativa a Gemini)

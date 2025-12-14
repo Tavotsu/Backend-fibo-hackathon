@@ -46,8 +46,27 @@ def check_s3():
         else:
             print(f"✅ Bucket '{bucket}' exists.")
             
-            # 3. Try partial upload test (optional, just listing is usually enough proof of auth)
-            print("✅ Write permission check skipped (Listing succeeded).")
+            # 3. Test Upload and Public Access
+            print("\nTesting Upload & Public Access...")
+            try:
+                test_filename = "test_connectivity.txt"
+                s3.put_object(Bucket=bucket, Key=test_filename, Body=b"Hello Bria", ContentType="text/plain")
+                print("✅ Upload successful.")
+                
+                # Construct Public URL
+                endpoint_clean = endpoint.replace("/storage/v1/s3", "")
+                public_url = f"{endpoint_clean}/storage/v1/object/public/{bucket}/{test_filename}"
+                print(f"   URL: {public_url}")
+                
+                import requests
+                r = requests.get(public_url)
+                if r.status_code == 200:
+                    print("✅ Public URL is accessible (HTTP 200). Bria should be able to read it.")
+                else:
+                    print(f"❌ Public URL FAILED ({r.status_code}). Bria cannot read this image!")
+                    print("   👉 ACTION: Go to Supabase > Storage > ai_art_director > Toggle 'Public Bucket' to ON.")
+            except Exception as e:
+                print(f"❌ Upload/Fetch Error: {e}")
 
     except ClientError as e:
         print(f"\n❌ S3 Error: {e}")
