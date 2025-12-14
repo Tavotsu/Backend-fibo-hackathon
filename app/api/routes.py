@@ -195,3 +195,109 @@ async def list_campaigns(current_user: deps.AuthUser = Depends(deps.get_current_
     """Lista todas las campañas"""
     campaigns = await Campaign.find(Campaign.user_id == current_user.id).to_list()
     return campaigns
+
+# -------------------------------------------------------------------------
+# NEW: Async Generation Endpoints (Playground / Direct)
+# -------------------------------------------------------------------------
+
+from fastapi import Form
+from app.services import jobs
+from app.schemas.fibo import BriaParameters
+
+async def process_generation_job(job_id: str, prompt: str, image_url: str = None, variations: int = 4, brand_guidelines: str = None):
+    try:
+        jobs.update_job(job_id, stage=jobs.JobStage.STARTED, progress=10)
+        
+        # Determine Camera Angle from brand_guidelines string if present (simple heuristic)
+        # e.g. "Camera Angle: Eye Level. Style: Premium..."
+        camera_angle = "eye_level"
+        if brand_guidelines and "Camera Angle:" in brand_guidelines:
+             # Basic parse or default
+             pass
+
+        from app.services import bria
+        results = []
+        
+        for i in range(variations):
+            progress_step = 10 + int((i / variations) * 80)
+            jobs.update_job(job_id, progress=progress_step)
+            jobs.add_event(job_id, f"Generating variation {i+1}/{variations}...")
+            
+            # Construct Parameters
+            # Note: We use "inspire" mode if image is present, "generate" otherwise.
+            # Ideally we'd parse exact params.
+            mode = "inspire" if image_url else "generate"
+            
+            params = BriaParameters(
+                prompt=prompt,
+                reference_image_url=image_url,
+                camera_angle="eye_level", # Default or parsed
+                seed=None # Random
+            )
+            
+            try:
+                # Add slight variation to prompt or seed if doing multiple? 
+                # Bria usually handles variation if seed is random.
+                res = await bria.generate_with_fibo(params, mode=mode)
+                
+                if res.get("image_url"):
+                    # Store result
+                    jobs.add_result(job_id, res["image_url"])
+                    results.append(res["image_url"])
+            except Exception as e:
+                logger.error(f"Error generating variation {i}: {e}")
+                jobs.add_event(job_id, f"Error on var {i+1}: {str(e)}")
+        
+        if not results:
+             raise Exception("No images could be generated.")
+
+        jobs.complete_job(job_id, results)
+        
+    except Exception as e:
+        logger.error(f"Job failed: {e}")
+        jobs.fail_job(job_id, str(e))
+
+@router.post("/generate-async")
+async def generate_async(
+    background_tasks: BackgroundTasks,
+    prompt: str = Form(...),
+    image: UploadFile = File(None),
+    brand_guidelines: str = Form(None),
+    variations: int = Form(1),
+    aspect_ratio: str = Form("1:1"),
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
+):
+    """
+    Endpoint asíncrono para generar imágenes (Playground Flow).
+    Sube imagen (si existe), crea Job y procesa en background.
+    """
+    # 1. Upload Image if present
+    public_url = None
+    if image:
+        # Check file size/type if needed
+        public_url = await upload_image_to_supabase(image, user_id=current_user.id)
+        if not public_url:
+            raise HTTPException(500, "Failed to upload input image to storage.")
+    
+    # 2. Create Job
+    job = jobs.create_job(prompt, brand_guidelines, variations, aspect_ratio, public_url)
+    
+    # 3. Start Background Task
+    background_tasks.add_task(
+        process_generation_job, 
+        job.job_id, 
+        prompt, 
+        public_url, 
+        variations, 
+        brand_guidelines
+    )
+    
+    return {"job_id": job.job_id, "status": "queued"}
+
+@router.get("/jobs/{job_id}")
+async def get_job_status(job_id: str, current_user: deps.AuthUser = Depends(deps.get_current_user)):
+    """Obtiene el estado de un trabajo de generación en segundo plano"""
+    status = jobs.get_job_status(job_id)
+    if not status:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return status
