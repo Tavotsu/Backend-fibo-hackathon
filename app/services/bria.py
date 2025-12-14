@@ -53,19 +53,19 @@ async def generate_with_fibo(
             response = await client.post(url, json=payload, headers=headers)
             
             if response.status_code == 200:
-                result = response.json()
+                data = response.json()
                 logger.info("Imagen generada exitosamente")
-                # V2 uses 'image_url', V1 used 'result_url'
-                img_url = result.get("image_url") or result.get("result_url")
                 
-                if not img_url:
-                    with open("backend_debug_response.log", "a") as f:
-                        f.write(f"MISSING IMAGE URL. Response: {result}\n")
-
+                # Handle nested 'result' key if present (Common in V2)
+                result_data = data.get("result", data)
+                
+                # V2 uses 'image_url', V1 used 'result_url'
+                img_url = result_data.get("image_url") or result_data.get("result_url")
+                
                 return {
                     "image_url": img_url,
-                    "structured_prompt": result.get("structured_prompt"),
-                    "status": result.get("status", "complete")
+                    "structured_prompt": result_data.get("structured_prompt"),
+                    "status": result_data.get("status", "complete")
                 }
                 error_msg = f"Error FIBO API: {response.status_code} - {response.text}"
                 logger.error(error_msg)
