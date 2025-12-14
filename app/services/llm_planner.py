@@ -13,108 +13,78 @@ class LLMPlanner:
     Incluye fallback si Ollama no está disponible.
     """
     def __init__(self):
-        self.host = getattr(settings, 'OLLAMA_HOST', "http://127.0.0.1:11434")
-        self.model = getattr(settings, 'OLLAMA_MODEL', "deepseek-r1:8b")
-        self.temperature = 0.7
-        self.enabled = True
+        # Configuración "Agnóstica" (OpenAI, Groq, DeepSeek)
+        self.api_key = settings.OPENAI_API_KEY
+        self.base_url = settings.OPENAI_BASE_URL
+        self.model = settings.LLM_MODEL_NAME
         
-        # Verificar conexión inicial (opcional, no bloqueante)
-        try:
-             requests.get(f"{self.host}/api/tags", timeout=1.0)
-        except Exception:
-            logger.warning("Ollama no parece estar accesible. Se usará fallback.")
-
-    def _safe_json_extract(self, text: str) -> Optional[str]:
-        """Intenta extraer un bloque JSON válido de un texto."""
-        if not text: return None
-        try:
-            json.loads(text)
-            return text
-        except:
-            pass
-            
-        start = min([i for i in [text.find("{"), text.find("[")] if i != -1], default=-1)
-        if start == -1: return None
-        
-        stack = []
-        for i in range(start, len(text)):
-            ch = text[i]
-            if ch in "{[":
-                stack.append(ch)
-            elif ch in "}]":
-                if not stack: continue
-                stack.pop()
-                if not stack:
-                    cand = text[start:i+1]
-                    try:
-                        json.loads(cand)
-                        return cand
-                    except:
-                        return None
-        return None
+        self.client = None
+        if self.api_key:
+            from openai import OpenAI  # sync client for simplicity in this flow, or Async if method is async
+            # Orchestrator calls this synchronously? 
+            # execute_plan is async? No, orchestrator.py:206 run_pipeline is sync threadpool.
+            # But wait, LLMPlanner call in orchestrator is synchronous: patches = self.planner.propose_patches(...)
+            self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
+        else:
+             logger.warning("OPENAI_API_KEY no encontrada. Se usará fallback dummy.")
 
     def propose_patches(self, user_prompt: str, base_sp: Dict[str, Any], brand_ctx: str, n: int) -> List[Dict[str, Any]]:
         """
-        Genera N variaciones (patches) del prompt base usando el LLM.
+        Genera N variaciones (patches) usando el LLM configurado (Groq/OpenAI).
         """
+        if not self.client:
+            return self._fallback(n)
+            
         system = (
-            "You are a World-Class Art Director and Expert Photographer. "
-            "Your goal is to take a simple product and create STUNNING, AWARD-WINNING visual concepts for it. "
-            "Do NOT just describe the product. Build a WORLD around it. "
-            "Use technical photography terms (Lighting, Lens, Angle, Film Stock) from the provided context. "
+            "Eres un AI Art Director de clase mundial y Trend Forecaster. "
+            "Tu objetivo es generar conceptos visuales de ALTO IMPACTO para e-commerce. "
             "\n\n"
-            "Output ONLY valid JSON. Return an array of exactly N patch objects. "
-            "Each patch is a partial JSON dict to merge into the base structured_prompt. "
-            "Refine 'background_prompt', 'lighting_prompt', 'style_prompt', 'camera_prompt' fields aggressively. "
-            "\n\n"
-            "RULES:"
-            "1. Transform the scene completely. If prompt is 'perfume', don't just put it on a table. Put it on a floating rock in space, or inside a melting glacier."
-            "2. Use specific lighting: 'Volumetric god rays', 'Neon rim lighting', 'Soft diffused window light'."
-            "3. Use specific composition: 'Low angle hero shot', 'Macro detail with bokeh'."
-            "4. Keep the product identity (logo/text) intact, but EVERYTHING around it must change."
-            "5. Make it look EXPENSIVE and CINEMATIC."
-        ).replace("N", str(n))
-
-        # RAG Context injection logic should be here or handled
-        rag_text = brand_ctx if brand_ctx else "No specific brand guidelines."
-
-        # Simplify payload structure for clarity
+            "FASE 1: ANÁLISIS ESTRATÉGICO\n"
+            "Analiza internamente: Categoría (Moda, Tech, Comida), Visual Trends 2024/2025, y Reglas de Nicho.\n"
+            "\n"
+            "FASE 2: GENERACIÓN DE VARIACIONES (Chain of Thought applied)\n"
+            "Genera variaciones que apliquen estas tendencias. "
+            "Usa el parámetro 'creativity_level' para variar desde 'Seguro' hasta 'Disruptivo'. "
+            "Para opciones 'Disruptivas', usa ángulos extremos (worms_eye) y colores contrastantes.\n"
+            "\n"
+            "Output ONLY valid JSON. Return an array of exactly N patch objects.\n"
+            "Each patch is a partial JSON dict to merge into the base structured_prompt.\n"
+            "Format: [ { patch_1 }, { patch_2 }, ... ]\n"
+        )
+        
         user_msg = (
             f"Product/Prompt: {user_prompt}\n"
-            f"Context/Guidelines: {rag_text}\n\n"
-            f"Create {n} DISTINCT and DRAMATIC variations."
+            f"Context/Guidelines: {brand_ctx}\n\n"
+            f"Create {n} DISTINCT and DRAMATIC variations based on Analysis."
             f"Base SP: {json.dumps(base_sp)}"
         )
         
-        model_payload = {
-            "model": self.model,
-            "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user_msg}
-            ],
-            "stream": False,
-            "options": {"temperature": 0.9} # High creativity
-        }
-
         try:
-            # Intentar llamar a Ollama
-            resp = requests.post(f"{self.host}/api/chat", json=model_payload, timeout=60)
-            if resp.status_code == 200:
-                data = resp.json()
-                content = data.get("message", {}).get("content", "")
-                extracted = self._safe_json_extract(content)
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user_msg}
+                ],
+                # response_format={"type": "json_object"}, # Groq supports this usually
+                temperature=0.8
+            )
+            
+            content = response.choices[0].message.content
+            extracted = self._safe_json_extract(content)
+            
+            if extracted:
+                patches = json.loads(extracted)
+                if isinstance(patches, dict) and "variations" in patches:
+                    patches = patches["variations"] # Handle if model wraps in key
                 
-                if extracted:
-                    patches = json.loads(extracted)
-                    if isinstance(patches, list):
-                        # Asegurar que tenemos N parches
-                        patches = patches[:n]
-                        while len(patches) < n:
-                            patches.append({})
-                        return [p if isinstance(p, dict) else {} for p in patches]
+                if isinstance(patches, list):
+                    # Ensure N items
+                    return patches[:n] + [{}] * (n - len(patches))
+                    
         except Exception as e:
-            logger.warning(f"Error llamando a LLM: {e}. Usando fallback.")
-
+            logger.error(f"Error LLM ({self.model}): {e}")
+            
         return self._fallback(n)
 
     def _fallback(self, n: int) -> List[Dict[str, Any]]:
