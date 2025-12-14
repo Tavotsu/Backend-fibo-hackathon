@@ -12,7 +12,7 @@ class LLMPlanner:
     Planificador que usa LLM (Ollama) para crear variaciones de prompts.
     Incluye fallback si Ollama no está disponible.
     """
-    def __init__(self):
+    def __init__(self) -> None:
         # Configuración "Agnóstica" (OpenAI, Groq, DeepSeek)
         self.api_key = settings.OPENAI_API_KEY
         self.base_url = settings.OPENAI_BASE_URL
