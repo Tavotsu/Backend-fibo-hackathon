@@ -30,6 +30,11 @@ class Settings(BaseSettings):
     SUPABASE_SECRET_KEY: str = os.getenv("SUPABASE_SECRET_KEY", "")
     SUPABASE_BUCKET_NAME: str = os.getenv("SUPABASE_BUCKET_NAME", "")
     SUPABASE_REGION: str = os.getenv("SUPABASE_REGION", "us-east-1")
+
+    # Auth Settings
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "your-super-secret-key-change-it")
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7 # 1 week
     
     # Application Settings
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"

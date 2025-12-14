@@ -12,3 +12,6 @@ motor
 beanie
 boto3
 pydantic-settings
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart

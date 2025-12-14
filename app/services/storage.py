@@ -25,8 +25,8 @@ s3_client = boto3.client(
     region_name=REGION
 )
 
-async def upload_image_to_supabase(file: UploadFile) -> Optional[str]:
-    """Sube archivo a Supabase Storage y devuelve URL pública."""
+async def upload_image_to_supabase(file: UploadFile, user_id: str) -> Optional[str]:
+    """Sube archivo a Supabase Storage en carpeta del usuario y devuelve URL pública."""
     
     # Secure Extension Handling
     file_extension = ""
@@ -37,7 +37,8 @@ async def upload_image_to_supabase(file: UploadFile) -> Optional[str]:
         file_extension = file.content_type.split("/")[-1].split("+")[0]
     file_extension = file_extension or "bin"
     
-    unique_filename = f"{uuid.uuid4()}.{file_extension}"
+    # Organize files by user_id
+    unique_filename = f"{user_id}/{uuid.uuid4()}.{file_extension}"
     
     try:
         s3_client.upload_fileobj(

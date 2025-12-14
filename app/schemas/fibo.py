@@ -51,7 +51,7 @@ class AgentOutput(BaseModel):
     variations: List[BriaStructuredPrompt]
 
 # Modelos de base de datos (usando lo que ya tenías, ajustado)
-from beanie import Document
+from beanie import Document, Indexed
 from datetime import datetime
 
 # Component Models
@@ -91,6 +91,7 @@ class ProposedVariation(BaseModel):
 class Campaign(Document):
     name: str
     brand_guidelines: BrandGuidelines
+    user_id: Indexed(str) # type: ignore
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Settings:
@@ -100,6 +101,7 @@ class Product(Document):
     campaign_id: str
     image_url: str
     original_filename: str
+    user_id: Indexed(str) # type: ignore
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Settings:
@@ -110,6 +112,7 @@ class Plan(Document):
     product_id: str
     proposed_variations: List[ProposedVariation]
     status: str = "pending"  # pending, executing, completed
+    user_id: Indexed(str) # type: ignore
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Settings:

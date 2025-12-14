@@ -12,17 +12,24 @@ from app.services.agent import brand_guidelines_to_variations
 from app.services.bria import generate_with_fibo, batch_generate, BriaAPIError
 import uuid
 import logging
+from app.schemas.user import User
+from app.api import deps
+from fastapi import Depends
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
 # 1. Gestión de Campañas
 @router.post("/campaigns", response_model=Campaign)
-async def create_campaign(campaign_in: CampaignCreate):
+async def create_campaign(
+    campaign_in: CampaignCreate,
+    current_user: User = Depends(deps.get_current_user)
+):
     """Crea una nueva campaña con brand guidelines"""
     new_campaign = Campaign(
         name=campaign_in.name,
-        brand_guidelines=campaign_in.brand_guidelines
+        brand_guidelines=campaign_in.brand_guidelines,
+        user_id=str(current_user.id)
     )
     await new_campaign.insert()
     logger.info(f"Campaña creada: {new_campaign.id}")
@@ -30,22 +37,27 @@ async def create_campaign(campaign_in: CampaignCreate):
 
 # 2. Ingesta de Producto
 @router.post("/campaigns/{campaign_id}/upload-product")
-async def upload_product(campaign_id: str, file: UploadFile = File(...)):
+async def upload_product(
+    campaign_id: str, 
+    file: UploadFile = File(...),
+    current_user: User = Depends(deps.get_current_user)
+):
     """Sube imagen de producto a Supabase"""
     
-    # Check if campaign exists
+    # Check if campaign exists and belongs to user
     campaign = await Campaign.get(campaign_id)
-    if not campaign:
+    if not campaign or campaign.user_id != str(current_user.id):
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
-    public_url = await upload_image_to_supabase(file)
+    public_url = await upload_image_to_supabase(file, user_id=str(current_user.id))
     if not public_url:
         raise HTTPException(status_code=500, detail="Error subiendo imagen")
     
     new_product = Product(
         campaign_id=str(campaign.id),
         image_url=public_url,
-        original_filename=file.filename or "unknown"
+        original_filename=file.filename or "unknown",
+        user_id=str(current_user.id)
     )
     await new_product.insert()
     
@@ -59,7 +71,11 @@ async def upload_product(campaign_id: str, file: UploadFile = File(...)):
 
 # Generate Plan con AI Agent
 @router.post("/campaigns/{campaign_id}/generate-plan", response_model=Plan)
-async def generate_plan(campaign_id: str, request: PlanRequest):
+async def generate_plan(
+    campaign_id: str, 
+    request: PlanRequest,
+    current_user: User = Depends(deps.get_current_user)
+):
     """
     Genera plan de variaciones usando AI Agent
     El agente LLM convierte brand guidelines en variaciones creativas con parámetros FIBO
@@ -67,16 +83,12 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
     
     # Verificar campaña y producto
     campaign = await Campaign.get(campaign_id)
-    if not campaign:
+    if not campaign or campaign.user_id != str(current_user.id):
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
     product = await Product.get(request.product_id)
-    if not product:
+    if not product or product.user_id != str(current_user.id):
         raise HTTPException(404, "Producto no encontrado")
-        
-    campaign = await Campaign.get(campaign_id)
-    if not campaign:
-         raise HTTPException(404, "Campaña no encontrada")
 
     # USAR AGENTE LLM para generar variaciones
     try:
@@ -94,7 +106,8 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
         campaign_id=campaign_id,
         product_id=str(product.id),
         proposed_variations=variations,
-        status="pending"
+        status="pending",
+        user_id=str(current_user.id)
     )
     await new_plan.insert()
 
@@ -107,14 +120,15 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
 async def execute_plan(
     campaign_id: str, 
     request: ExecuteRequest,
-    background_tasks: BackgroundTasks
+    background_tasks: BackgroundTasks,
+    current_user: User = Depends(deps.get_current_user)
 ):
     """
     Ejecuta plan generando imágenes con FIBO
     Soporta generación batch de múltiples variaciones
     """
     plan = await Plan.get(request.plan_id)
-    if not plan:
+    if not plan or plan.user_id != str(current_user.id):
         raise HTTPException(status_code=404, detail="Plan no encontrado")
     
     # Filtrar variaciones seleccionadas
@@ -160,16 +174,25 @@ async def execute_plan(
 
 # Get Plan (útil para ver resultados)
 @router.get("/plans/{plan_id}", response_model=Plan)
-async def get_plan(plan_id: str):
+async def get_plan(
+    plan_id: str,
+    current_user: User = Depends(deps.get_current_user)
+):
     """Obtiene un plan con sus variaciones y resultados"""
     plan = await Plan.get(plan_id)
-    if not plan:
+    if not plan or plan.user_id != str(current_user.id):
         raise HTTPException(status_code=404, detail="Plan no encontrado")
     return plan
 
+# List User Plans (History)
+@router.get("/plans", response_model=List[Plan])
+async def list_plans(current_user: User = Depends(deps.get_current_user)):
+    """Lista todos los planes (historial) del usuario, ordenados por fecha"""
+    return await Plan.find(Plan.user_id == str(current_user.id)).sort("-created_at").to_list()
+
 # List Campaigns
 @router.get("/campaigns", response_model=List[Campaign])
-async def list_campaigns():
+async def list_campaigns(current_user: User = Depends(deps.get_current_user)):
     """Lista todas las campañas"""
-    campaigns = await Campaign.find_all().to_list()
+    campaigns = await Campaign.find(Campaign.user_id == str(current_user.id)).to_list()
     return campaigns
