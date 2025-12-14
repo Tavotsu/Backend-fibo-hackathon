@@ -164,7 +164,7 @@ El agente convierte brand guidelines en variaciones creativas:
 - **FastAPI**: Framework web
 - **Beanie**: ODM para MongoDB
 - **httpx**: Cliente HTTP async para FIBO API
-- **OpenAI**: Agente LLM (opcional)
+- **DeepSeek**: Agente LLM
 - **boto3**: Cliente S3 para Supabase
 - **pydantic-settings**: Gestión de configuración
 
