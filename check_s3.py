@@ -48,8 +48,8 @@ def check_s3():
             
             # 3. Test Upload and Public Access
             print("\nTesting Upload & Public Access...")
+            test_filename = "test_connectivity.txt"
             try:
-                test_filename = "test_connectivity.txt"
                 s3.put_object(Bucket=bucket, Key=test_filename, Body=b"Hello Bria", ContentType="text/plain")
                 print("✅ Upload successful.")
                 
@@ -59,19 +59,26 @@ def check_s3():
                 print(f"   URL: {public_url}")
                 
                 import requests
-                r = requests.get(public_url)
+                r = requests.get(public_url, timeout=10)
                 if r.status_code == 200:
                     print("✅ Public URL is accessible (HTTP 200). Bria should be able to read it.")
                 else:
-                    print(f"❌ Public URL FAILED ({r.status_code}). Bria cannot read this image!")
+                    print(f"❌ Public URL FAILED ({r.status_code}). Bria cannot read this file!")
                     print("   👉 ACTION: Go to Supabase > Storage > ai_art_director > Toggle 'Public Bucket' to ON.")
             except Exception as e:
-                print(f"❌ Upload/Fetch Error: {e}")
+                print(f"❌ Upload/Fetch Error: {repr(e)}")
+            finally:
+                # Cleanup
+                try:
+                    s3.delete_object(Bucket=bucket, Key=test_filename)
+                    print("🧹 Cleanup: Test object deleted.")
+                except Exception as cleanup_e:
+                    print(f"⚠️ Cleanup Failed: {repr(cleanup_e)}")
 
     except ClientError as e:
         print(f"\n❌ S3 Error: {e}")
     except Exception as e:
-        print(f"\n❌ General Error: {e}")
+        print(f"\n❌ General Error: {repr(e)}")
 
 if __name__ == "__main__":
     check_s3()
