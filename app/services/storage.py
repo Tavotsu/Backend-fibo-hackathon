@@ -45,7 +45,7 @@ async def upload_image_to_supabase(file: UploadFile, user_id: str) -> Optional[s
             file.file,
             BUCKET_NAME,
             unique_filename,
-            ExtraArgs={'ContentType': file.content_type, 'ACL': 'public-read'} 
+            ExtraArgs={'ContentType': file.content_type} 
         )
         
         # Parcing the endpoint URL to extract hostname
