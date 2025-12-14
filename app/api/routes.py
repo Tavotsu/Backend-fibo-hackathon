@@ -12,7 +12,6 @@ from app.services.agent import brand_guidelines_to_variations
 from app.services.bria import generate_with_fibo, batch_generate, BriaAPIError
 import uuid
 import logging
-from app.schemas.user import User
 from app.api import deps
 from fastapi import Depends
 
@@ -23,13 +22,13 @@ logger = logging.getLogger(__name__)
 @router.post("/campaigns", response_model=Campaign)
 async def create_campaign(
     campaign_in: CampaignCreate,
-    current_user: User = Depends(deps.get_current_user)
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
 ):
     """Crea una nueva campaña con brand guidelines"""
     new_campaign = Campaign(
         name=campaign_in.name,
         brand_guidelines=campaign_in.brand_guidelines,
-        user_id=str(current_user.id)
+        user_id=current_user.id
     )
     await new_campaign.insert()
     logger.info(f"Campaña creada: {new_campaign.id}")
@@ -40,16 +39,16 @@ async def create_campaign(
 async def upload_product(
     campaign_id: str, 
     file: UploadFile = File(...),
-    current_user: User = Depends(deps.get_current_user)
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
 ):
     """Sube imagen de producto a Supabase"""
     
     # Check if campaign exists and belongs to user
     campaign = await Campaign.get(campaign_id)
-    if not campaign or campaign.user_id != str(current_user.id):
+    if not campaign or campaign.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
-    public_url = await upload_image_to_supabase(file, user_id=str(current_user.id))
+    public_url = await upload_image_to_supabase(file, user_id=current_user.id)
     if not public_url:
         raise HTTPException(status_code=500, detail="Error subiendo imagen")
     
@@ -57,7 +56,7 @@ async def upload_product(
         campaign_id=str(campaign.id),
         image_url=public_url,
         original_filename=file.filename or "unknown",
-        user_id=str(current_user.id)
+        user_id=current_user.id
     )
     await new_product.insert()
     
@@ -74,7 +73,7 @@ async def upload_product(
 async def generate_plan(
     campaign_id: str, 
     request: PlanRequest,
-    current_user: User = Depends(deps.get_current_user)
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
 ):
     """
     Genera plan de variaciones usando AI Agent
@@ -83,11 +82,11 @@ async def generate_plan(
     
     # Verificar campaña y producto
     campaign = await Campaign.get(campaign_id)
-    if not campaign or campaign.user_id != str(current_user.id):
+    if not campaign or campaign.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
     product = await Product.get(request.product_id)
-    if not product or product.user_id != str(current_user.id):
+    if not product or product.user_id != current_user.id:
         raise HTTPException(404, "Producto no encontrado")
 
     # USAR AGENTE LLM para generar variaciones
@@ -107,7 +106,7 @@ async def generate_plan(
         product_id=str(product.id),
         proposed_variations=variations,
         status="pending",
-        user_id=str(current_user.id)
+        user_id=current_user.id
     )
     await new_plan.insert()
 
@@ -121,14 +120,14 @@ async def execute_plan(
     campaign_id: str, 
     request: ExecuteRequest,
     background_tasks: BackgroundTasks,
-    current_user: User = Depends(deps.get_current_user)
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
 ):
     """
     Ejecuta plan generando imágenes con FIBO
     Soporta generación batch de múltiples variaciones
     """
     plan = await Plan.get(request.plan_id)
-    if not plan or plan.user_id != str(current_user.id):
+    if not plan or plan.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Plan no encontrado")
     
     # Filtrar variaciones seleccionadas
@@ -176,23 +175,23 @@ async def execute_plan(
 @router.get("/plans/{plan_id}", response_model=Plan)
 async def get_plan(
     plan_id: str,
-    current_user: User = Depends(deps.get_current_user)
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
 ):
     """Obtiene un plan con sus variaciones y resultados"""
     plan = await Plan.get(plan_id)
-    if not plan or plan.user_id != str(current_user.id):
+    if not plan or plan.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Plan no encontrado")
     return plan
 
 # List User Plans (History)
 @router.get("/plans", response_model=List[Plan])
-async def list_plans(current_user: User = Depends(deps.get_current_user)):
+async def list_plans(current_user: deps.AuthUser = Depends(deps.get_current_user)):
     """Lista todos los planes (historial) del usuario, ordenados por fecha"""
-    return await Plan.find(Plan.user_id == str(current_user.id)).sort("-created_at").to_list()
+    return await Plan.find(Plan.user_id == current_user.id).sort("-created_at").to_list()
 
 # List Campaigns
 @router.get("/campaigns", response_model=List[Campaign])
-async def list_campaigns(current_user: User = Depends(deps.get_current_user)):
+async def list_campaigns(current_user: deps.AuthUser = Depends(deps.get_current_user)):
     """Lista todas las campañas"""
-    campaigns = await Campaign.find(Campaign.user_id == str(current_user.id)).to_list()
+    campaigns = await Campaign.find(Campaign.user_id == current_user.id).to_list()
     return campaigns

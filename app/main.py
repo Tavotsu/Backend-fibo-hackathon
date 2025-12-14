@@ -4,11 +4,9 @@ load_dotenv()
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from app.api.routes import router as api_router
-from app.api import auth
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from app.schemas.fibo import Campaign, Product, Plan
-from app.schemas.user import User
 
 # Life cycle of the application
 @asynccontextmanager
@@ -22,7 +20,7 @@ async def lifespan(app: FastAPI):
         # Initialize Beanie with the Motor client and document models
         await init_beanie(
             database=client.ai_art_director, # type: ignore
-            document_models=[Campaign, Product, Plan, User]
+            document_models=[Campaign, Product, Plan]
         )
         print("MongoDB Conectado\n")
         print("Backend inicializado")
@@ -37,4 +35,3 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="AI Art Director API", version="1.0.0", lifespan=lifespan)
 
 app.include_router(api_router, prefix="/api/v1")
-app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])

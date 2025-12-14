@@ -24,7 +24,12 @@ class Settings(BaseSettings):
     MONGO_URI: str = os.getenv("MONGO_URI", "")
     DB_NAME: str = "ai_art_director"
     
-    # Supabase Storage (S3-compatible)
+    # Supabase Storage & Auth
+    SUPABASE_URL: str = os.getenv("SUPABASE_URL", "")
+    SUPABASE_KEY: str = os.getenv("SUPABASE_KEY", "") # Service Role Key for Backend or Anon if just verifying
+    SUPABASE_JWT_SECRET: str = os.getenv("SUPABASE_JWT_SECRET", "") # Optional for manual verify
+    
+    # S3 Compatibility (Keep existing if relying on boto3)
     SUPABASE_ENDPOINT_URL: str = os.getenv("SUPABASE_ENDPOINT_URL", "")
     SUPABASE_ACCESS_KEY: str = os.getenv("SUPABASE_ACCESS_KEY", "")
     SUPABASE_SECRET_KEY: str = os.getenv("SUPABASE_SECRET_KEY", "")
