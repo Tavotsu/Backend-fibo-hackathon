@@ -4,12 +4,17 @@ from supabase import create_client, Client
 from app.core.config import settings
 from pydantic import BaseModel
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login") # URL is just for docs
+# Dummy endpoint for Swagger (since we use Supabase external auth)
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 
-# Initialize Supabase Client (Service Role or Anon, preferably Anon for verify, but Service Role is safer for backend ops)
-# Actually for verify_jwt, just the anon key is enough if we trust supabase signature verification?
-# Standard pattern: verify token.
-supabase: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+# Lazy loading Supabase Client to prevent cold-start crashes if env vars missing
+_supabase: Client | None = None
+
+def get_supabase() -> Client:
+    global _supabase
+    if _supabase is None:
+        _supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+    return _supabase
 
 class AuthUser(BaseModel):
     id: str
@@ -17,8 +22,11 @@ class AuthUser(BaseModel):
 
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> AuthUser:
     try:
+        # Lazy load client
+        client = get_supabase()
+        
         # Supabase-py 'get_user' verifies the JWT
-        user_response = supabase.auth.get_user(token)
+        user_response = client.auth.get_user(token)
         if not user_response or not user_response.user:
              raise HTTPException(status_code=401, detail="Invalid authentication credentials")
         

@@ -28,8 +28,9 @@ class JobStage(str, Enum):
     ERROR = "ERROR"
 
 class Job:
-    def __init__(self, job_id: str, prompt: str, variations: int = 4):
+    def __init__(self, job_id: str, prompt: str, variations: int = 4, user_id: Optional[str] = None):
         self.job_id = job_id
+        self.user_id = user_id
         self.prompt = prompt
         self.variations = variations
         self.stage = JobStage.QUEUED
@@ -62,6 +63,7 @@ class Job:
     def to_dict(self) -> Dict[str, Any]:
         return {
             "job_id": self.job_id,
+            "user_id": self.user_id,
             "prompt": self.prompt,
             "stage": self.stage,
             "progress": self.progress,
@@ -83,10 +85,11 @@ def create_job(
     brand_guidelines: str = "",
     variations: int = 4,
     aspect_ratio: str = "1:1",
-    image_path: Optional[str] = None
+    image_path: Optional[str] = None,
+    user_id: Optional[str] = None
 ) -> Job:
     job_id = f"job_{uuid.uuid4().hex[:10]}"
-    job = Job(job_id, prompt, variations)
+    job = Job(job_id, prompt, variations, user_id=user_id)
     # Set optional fields
     job.brand_guidelines = brand_guidelines
     job.aspect_ratio = aspect_ratio

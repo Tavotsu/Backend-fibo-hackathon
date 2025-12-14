@@ -226,8 +226,12 @@ async def generate_async(
         if not public_url:
             raise HTTPException(500, "Failed to upload input image to storage.")
     
+    # Validate Variations
+    if variations < 1 or variations > 8:
+        raise HTTPException(status_code=400, detail="Variations must be between 1 and 8")
+
     # 2. Create Job
-    job = jobs.create_job(prompt, brand_guidelines, variations, aspect_ratio, public_url)
+    job = jobs.create_job(prompt, brand_guidelines, variations, aspect_ratio, public_url, user_id=current_user.id)
     
     # 3. Start Background Task
     background_tasks.add_task(
@@ -293,7 +297,7 @@ async def process_generation_job(
                         try:
                             import json
                             sp = json.loads(sp)
-                        except:
+                        except json.JSONDecodeError:
                             sp = {}
                             
                     # Add to proposed vars for persistence
@@ -327,14 +331,9 @@ async def process_generation_job(
                     user_id=user_id
                 )
                 await new_plan.insert()
-                # logger.info MUST show up
-                print(f"!!! SUCCESS: Persisted Job {job_id} to DB (Plan {new_plan.id}) !!!")
                 logger.info(f"Persisted job {job_id} as Plan {new_plan.id} for user {user_id}")
             except Exception as db_e:
-                import traceback
-                print(f"!!! DB ERROR: {db_e}")
-                traceback.print_exc()
-                logger.error(f"Failed to persist plan to MongoDB: {db_e}")
+                logger.exception(f"Failed to persist plan to MongoDB: {db_e}")
                 
     except Exception as e:
         logger.error(f"Job failed: {e}")
@@ -346,4 +345,9 @@ async def get_job_status(job_id: str, current_user: deps.AuthUser = Depends(deps
     status = jobs.get_job_status(job_id)
     if not status:
         raise HTTPException(status_code=404, detail="Job not found")
+        
+    # Security: Enforce Ownership
+    if status.get("user_id") and status.get("user_id") != current_user.id:
+        raise HTTPException(status_code=404, detail="Job not found")
+        
     return status
