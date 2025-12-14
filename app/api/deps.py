@@ -20,6 +20,10 @@ class AuthUser(BaseModel):
     id: str
     email: str
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> AuthUser:
     try:
         # Lazy load client
@@ -35,10 +39,10 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> AuthUser:
         return AuthUser(id=user_data.id, email=user_data.email or "")
         
     except Exception as e:
-        print(f"Auth Error: {e}")
+        logger.warning(f"Authentication failed: {e}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Could not validate credentials",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+        ) from None
 

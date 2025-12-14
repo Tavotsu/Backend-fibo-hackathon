@@ -21,12 +21,9 @@ class LLMPlanner:
         self.client = None
         if self.api_key:
             from openai import OpenAI  # sync client for simplicity in this flow, or Async if method is async
-            # Orchestrator calls this synchronously? 
-            # execute_plan is async? No, orchestrator.py:206 run_pipeline is sync threadpool.
-            # But wait, LLMPlanner call in orchestrator is synchronous: patches = self.planner.propose_patches(...)
             self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
         else:
-             logger.warning("OPENAI_API_KEY no encontrada. Se usará fallback dummy.")
+            logger.warning("OPENAI_API_KEY no encontrada. Se usará fallback dummy.")
 
     def propose_patches(self, user_prompt: str, base_sp: Dict[str, Any], brand_ctx: str, n: int) -> List[Dict[str, Any]]:
         """
@@ -83,9 +80,32 @@ class LLMPlanner:
                     return patches[:n] + [{}] * (n - len(patches))
                     
         except Exception as e:
-            logger.error(f"Error LLM ({self.model}): {e}")
+            logger.exception(f"Error LLM ({self.model}): {e}")
             
         return self._fallback(n)
+
+    @staticmethod
+    def _safe_json_extract(text: str) -> Optional[str]:
+        """Extrae el primer bloque JSON válido de un string (hacky robustez)."""
+        if not text:
+            return None
+        text = text.strip()
+        # Remove markdown fences
+        if text.startswith("```"):
+            text = text.strip("`")
+            # drop lang
+            if "\n" in text:
+                text = text.split("\n", 1)[1]
+        
+        text = text.strip()
+        
+        # Find start
+        start_candidates = [i for i in (text.find("{"), text.find("[")) if i != -1]
+        if not start_candidates:
+            return None
+            
+        start = min(start_candidates)
+        return text[start:]
 
     def _fallback(self, n: int) -> List[Dict[str, Any]]:
         """Presets de fallback si falla el LLM."""

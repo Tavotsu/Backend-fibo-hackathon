@@ -38,6 +38,11 @@ async def upload_image_to_supabase(file: UploadFile, user_id: str) -> Optional[s
     file_extension = file_extension or "bin"
     
     # Organize files by user_id
+    # Sanitize user_id to prevent path traversal
+    if not user_id or "/" in user_id or "\\" in user_id or ".." in user_id:
+        print(f"Invalid user_id format: {user_id}")
+        return None
+    
     unique_filename = f"{user_id}/{uuid.uuid4()}.{file_extension}"
     
     try:

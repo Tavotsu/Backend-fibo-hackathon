@@ -221,7 +221,18 @@ async def generate_async(
     # 1. Upload Image if present
     public_url = None
     if image:
-        # Check file size/type if needed
+        # Validate Content-Type
+        if not image.content_type or not image.content_type.startswith("image/"):
+            raise HTTPException(400, "File must be an image using a supported format (jpeg, png, etc.)")
+        
+        # Validate Size (Max 10MB)
+        image.file.seek(0, 2)
+        file_size = image.file.tell()
+        image.file.seek(0)
+        
+        if file_size > 10 * 1024 * 1024: # 10MB
+            raise HTTPException(400, "Image size exceeds maximum limit of 10MB")
+
         public_url = await upload_image_to_supabase(image, user_id=current_user.id)
         if not public_url:
             raise HTTPException(500, "Failed to upload input image to storage.")
