@@ -18,8 +18,34 @@ _openai_client = None
 def get_openai_client():
     global _openai_client
     if _openai_client is None and settings.OPENAI_API_KEY:
-        _openai_client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        _openai_client = AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            base_url=settings.OPENAI_BASE_URL
+        )
     return _openai_client
+
+async def brand_guidelines_to_variations(
+    brand_guidelines: BrandGuidelines,
+    product_description: str,
+    variations_count: int = 5
+) -> List[ProposedVariation]:
+    """
+    Usa LLM para generar variaciones creativas basadas en brand guidelines
+    """
+    
+    client = get_openai_client()
+    
+    if not client:
+        logger.warning("LLM API key no configurada, usando variaciones mock")
+        return _generate_mock_variations(brand_guidelines, product_description, variations_count)
+    
+    # ... (SYSTEM PROMPT REMAINED SAME, SKIPPED FOR BREVITY in replacement if possible, but replace tool needs context. 
+    # Since I cannot skip lines inside a block easily without context, I will target the specific function blocks or use MULTI replace if disjoint.
+    # Actually, the file is small enough. I will target the Init block and the Call block separately using multi_replace_file_content to be safe and clean.)
+    
+    # Wait, simple replace is fine if I target specific lines.
+    # Let's use multi_replace for safety.
+
 
 
 async def brand_guidelines_to_variations(

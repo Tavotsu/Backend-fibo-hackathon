@@ -14,8 +14,10 @@ class Settings(BaseSettings):
     BRIA_IMAGE_GENERATE_ENDPOINT: str = "/image/generate"
     BRIA_STRUCTURED_PROMPT_ENDPOINT: str = "/v2/structured_prompt/generate"
     
-    # OpenAI para agente LLM (opcional, alternativa a Gemini)
+    # OpenAI / Compatible LLM (DeepSeek, etc.)
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
+    OPENAI_BASE_URL: str = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+    LLM_MODEL_NAME: str = os.getenv("LLM_MODEL_NAME", "gpt-4o-mini")
     
     # Google Gemini (usado por FIBO internamente)
     GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
