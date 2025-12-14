@@ -1,0 +1,55 @@
+{
+  "plan_id": "plan_4ba4f13dec",
+  "base_seed": 375113071,
+  "prompt": "Dame un juguete de este personaje, debe conservar sus colores originales\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 375113071,
+      "structured_prompt": {
+        "short_description": "A collectible toy figure of the character with a square, pixelated head and a light blue jacket, standing in a dynamic pose. The toy maintains the original character's color scheme and distinctive features, presented as a high-quality collectible.",
+        "objects": [
+          {
+            "description": "A collectible toy figure of the character, featuring a square head with an angry pixelated face design (black background, white pixelated eyes and mouth outline, white border with small white lights). The side of the head is blue with a grid pattern. The body wears a light blue bomber jacket with a 'WATT' patch on the left chest and dark blue cuffs and waistband. The toy is designed to be a faithful miniature representation of the original character.",
+            "location": "center",
+            "relationship": "The main subject of the image, standing prominently.",
+            "relative_size": "medium",
+            "shape_and_color": "Rectangular head, humanoid body, predominantly light blue, black, and white.",
+            "texture": "Smooth plastic with some textured details for the pixelated face and jacket fabric.",
+            "appearance_details": "The head has a distinct angry pixelated expression. The jacket has a zipper detail and pockets.",
+            "pose": "Standing upright with one arm slightly raised, as if in a dynamic or action pose, but not making the rude gesture of the reference image.",
+            "expression": "The pixelated face on the head displays an angry or determined expression.",
+            "clothing": "Light blue bomber jacket with dark blue accents.",
+            "action": "Standing in a display-ready pose.",
+            "gender": "Androgynous (due to the head design), but the body shape suggests male.",
+            "skin_tone_and_texture": "Not applicable, as it's a toy figure.",
+            "orientation": "Facing slightly to the right, with the body angled towards the viewer."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit with subtle fill light from the sides.",
+          "shadows": "Soft, diffused shadows beneath the toy, indicating its presence on a surface without harsh distractions."
+        },
+        "aesthetics": {
+          "composition": "Centered, portrait composition, focusing on the toy figure.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the toy figure.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 50mm) to capture the toy without distortion."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph of a collectible toy figure, intended for marketing or display purposes.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 18:51:10.680199"
+}

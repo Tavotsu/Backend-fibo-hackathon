@@ -1,0 +1,66 @@
+{
+  "plan_id": "plan_f329815f13",
+  "base_seed": 11025198,
+  "prompt": "\r\nmake a irl for this image, keep the city and the night background, keep the form and the design of the mask",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 11025198,
+      "structured_prompt": {
+        "short_description": "A young man with dark skin and dreadlocks, wearing a dark blue hoodie, white t-shirt, and dark pants, is captured in a low squatting pose on a rooftop. He wears a stark white, expressionless mask with angry, angular eye slits. White wired earbuds are visible. The background features a sprawling city skyline at night, with numerous illuminated buildings under a dark blue sky, creating a moody and mysterious atmosphere.",
+        "objects": [
+          {
+            "description": "A young man with dark skin and short dreadlocks, wearing a dark blue zip-up hoodie over a white t-shirt and dark pants. He has white wired earbuds in his ears.",
+            "location": "center foreground",
+            "relationship": "The primary subject of the image, positioned against the city background.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Human figure, predominantly dark blue, white, and black.",
+            "texture": "Fabric of clothing appears soft, skin is smooth.",
+            "appearance_details": "His hands are resting on the ground in front of him, fingers slightly splayed. His posture is athletic and ready.",
+            "pose": "Low squat, leaning slightly forward, hands on the ground.",
+            "expression": "Not visible due to mask.",
+            "clothing": "Dark blue zip-up hoodie, white t-shirt, dark pants, dark sneakers.",
+            "action": "Squatting, appearing to be observing or preparing for action.",
+            "gender": "Male",
+            "skin_tone_and_texture": "Dark skin tone, smooth texture.",
+            "orientation": "Facing slightly to the right, body angled towards the viewer."
+          },
+          {
+            "description": "A stark white, featureless mask covering the man's entire face. It has angular, angry-looking eye slits and a slightly downturned mouth shape, conveying a sense of menace or sadness.",
+            "location": "on the man's face",
+            "relationship": "Worn by the man, obscuring his identity.",
+            "relative_size": "medium",
+            "shape_and_color": "Oval shape, pure white with black eye slits.",
+            "texture": "Smooth, hard plastic or ceramic.",
+            "appearance_details": "The eye slits are sharp and pointed, giving an intense, almost hostile expression.",
+            "expression": "Angry/menacing (implied by eye slits)",
+            "orientation": "Facing slightly to the right, matching the man's head orientation."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Primarily backlit by the city lights, with some ambient light illuminating the subject from the front/sides.",
+          "shadows": "Soft, diffused shadows on the subject, with longer, subtle shadows cast by the man onto the ground due to the low light and city glow."
+        },
+        "aesthetics": {
+          "composition": "Centered composition with the subject prominently in the foreground, creating a strong focal point against the detailed background. The squatting pose fills the lower half of the frame.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subject.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a realistic photograph of a masked individual in an urban night setting, suitable for a character portrait in a film, game, or a dramatic editorial piece.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:47:09.826704"
+}

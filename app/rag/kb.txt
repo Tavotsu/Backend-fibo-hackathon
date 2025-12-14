@@ -1,0 +1,48 @@
+Brand Guidelines - Marketing Photography
+
+PRODUCT PRESENTATION:
+- Keep product centered and clearly visible
+- Maintain brand integrity (logo, colors, packaging)
+- Ensure label text is readable
+- Product should be hero of the shot
+
+LIGHTING:
+- Prefer soft, diffused lighting for premium look
+- Studio softbox, golden hour, or rim lighting
+- Avoid harsh shadows on product
+
+CAMERA ANGLES:
+- Eye-level: neutral, trustworthy
+- Three-quarter: dynamic, engaging
+- Top-down flat lay: editorial, modern
+- Low angle: bold, impactful
+
+BACKGROUND:
+- Clean, minimal for e-commerce
+- Subtle lifestyle context for aspirational
+- Blurred backgrounds (shallow DOF) to isolate product
+
+
+PHOTOGRAPHIC GLOSSARY (Use these to enhance prompts):
+- Lighting: Rembrandt (dramatic), Butterfly (glamour), Split (contrasty), Volumetric/God Rays (atmospheric), Neon Noir (cyberpunk), Softbox (commercial clean).
+- Camera Angles: Low Angle (heroic), High Angle (vulnerable/overview), Dutch Angle (dynamic/tension), Macro (details).
+- Lenses: 35mm (context), 50mm (natural), 85mm (portrait/product flattering), 100mm Macro.
+- Aperture: f/1.8 (bokeh/blur background), f/8 (sharp everywhere).
+- Film Stocks: Kodak Portra 400 (warm/grain), Fujifilm Velvia (saturated).
+
+CINEMATIC STYLES:
+- "Cyberpunk": Neon, rain, reflections, high contrast, blue/purple.
+- "Minimalist Luxury": Concrete, shadows, plants, neutral tones, hard light.
+- "Ethereal Nature": Fog, soft light, moss, water, floating elements, pastel tones.
+- "Industrial Chic": Metal, brick, raw textures, dramatic shadows.
+
+INSTRUCTIONS FOR SCENE DESIGN:
+- Always define the Light Source direction.
+- Define the Surface material (wood, glass, water, marble).
+- Add Atmospheric elements (fog, dust particles, lens flare).
+- NEVER assume a plain white background unless asked.
+
+COLOR SCHEME:
+- Use brand accent colors
+- Neutral backgrounds with brand pops
+- Maintain brand color consistency

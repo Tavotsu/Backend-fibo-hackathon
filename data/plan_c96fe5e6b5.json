@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_c96fe5e6b5",
+  "base_seed": 171831640,
+  "prompt": "Dame una imitacion perfecta de la imagen\r\n\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 171831640,
+      "structured_prompt": {
+        "short_description": "A split portrait featuring two distinct anime-style characters. The left side depicts a character with light blue hair and a calm, slightly melancholic expression, rendered in cool blue and white tones. The right side shows a character with spiky red hair and an intense, fierce expression, depicted in stark red, black, and white. A sharp vertical line divides the two faces, emphasizing their contrasting appearances and moods.",
+        "objects": [
+          {
+            "description": "The left half of an anime-style character's face, featuring light blue, wavy hair with subtle white highlights, a large eye with a light blue iris and a small white starburst detail, and a small nose piercing. The skin is pale white with blue undertones. The character's expression is serene and slightly sad.",
+            "location": "left half of the frame, center",
+            "relationship": "Part of a split portrait, contrasting with the right character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shapes, predominantly light blue, white, and dark blue.",
+            "texture": "Smooth, stylized hair and skin.",
+            "appearance_details": "Stylized anime features, including large eye and delicate facial structure. Small white dots and lines suggest light or sparkle on the hair and face.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Calm, slightly melancholic, with a hint of sadness in the eye.",
+            "clothing": "Dark, indistinct clothing visible at the bottom left.",
+            "action": "None, a static portrait.",
+            "gender": "Ambiguous, leaning feminine.",
+            "skin_tone_and_texture": "Pale white with blue undertones, smooth.",
+            "orientation": "Upright"
+          },
+          {
+            "description": "The right half of an anime-style character's face, characterized by spiky, dark red hair, a sharp, intense eye with a black iris, and prominent black markings resembling stitches or scars on the cheek and below the eye. A small drop of red liquid (blood) is visible near the mouth area. The skin is pale white.",
+            "location": "right half of the frame, center",
+            "relationship": "Part of a split portrait, contrasting with the left character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shapes, predominantly red, black, and white.",
+            "texture": "Stylized, sharp hair and smooth skin.",
+            "appearance_details": "Aggressive anime features, including sharp eye and prominent facial markings. Red lines and patterns are visible within the red hair.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Fierce, intense, and determined.",
+            "clothing": "Indistinct, dark clothing visible at the bottom right.",
+            "action": "None, a static portrait.",
+            "gender": "Ambiguous, leaning masculine.",
+            "skin_tone_and_texture": "Pale white, smooth.",
+            "orientation": "Upright"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Evenly lit from the front, emphasizing the flat, graphic style.",
+          "shadows": "Minimal, stylized shadows used for depth and definition rather than realistic light fall-off."
+        },
+        "aesthetics": {
+          "composition": "Symmetrical split composition, with each character occupying exactly half of the frame. Close-up portrait composition.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on both subjects.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "digital illustration",
+        "context": "This is a concept for a character design illustration, possibly for a video game, anime series, or graphic novel, showcasing two contrasting personalities or aspects of a single character.",
+        "artistic_style": "anime, graphic, stylized"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 16:20:48.433626"
+}

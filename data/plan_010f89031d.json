@@ -1,0 +1,63 @@
+{
+  "plan_id": "plan_010f89031d",
+  "base_seed": 1618491014,
+  "prompt": "give me a image for this crystal ambience\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1618491014,
+      "structured_prompt": {
+        "short_description": "A mystical cavern scene featuring a lone figure with flowing, glowing hair and ram-like horns, partially submerged in a calm, reflective pool. The cavern is illuminated by numerous large, crystalline formations that emit a vibrant, ethereal blue light, casting reflections on the water's surface and creating a sense of wonder and tranquility. The overall ambiance is one of serene mystery within a hidden, magical environment.",
+        "objects": [
+          {
+            "description": "A figure with long, flowing hair that glows with an internal blue light, and prominent dark, curved ram horns. Only the back of the head and shoulders are visible above the water.",
+            "location": "center foreground",
+            "relationship": "The central subject, interacting with the water and reflecting the light from the crystals.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shape, primarily glowing blue hair with dark, curved horns.",
+            "texture": "Smooth, flowing hair; hard, polished horns.",
+            "appearance_details": "Hair appears to be made of light or imbued with a magical glow, contrasting with the solid, dark horns.",
+            "pose": "Submerged from the shoulders down, head slightly tilted forward.",
+            "action": "Floating or wading in the water.",
+            "gender": "ambiguous",
+            "orientation": "Facing away from the viewer, towards the crystals."
+          },
+          {
+            "description": "Numerous large, geometric crystal formations of varying heights, emitting a bright, internal blue light.",
+            "location": "midground and background, scattered across the landscape",
+            "relationship": "These crystals are the primary light source and define the magical ambiance of the scene.",
+            "relative_size": "medium to large",
+            "shape_and_color": "Tall, pointed, crystalline shapes; vibrant blue.",
+            "texture": "Smooth, translucent, glowing.",
+            "appearance_details": "They appear to be growing out of the rocky terrain, intensely luminous.",
+            "number_of_objects": 8,
+            "orientation": "Upright, pointing towards the sky."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Omnidirectional from the crystals, with strong backlighting on the distant rock formations.",
+          "shadows": "Soft, diffused shadows in the foreground, with deeper, darker shadows in the cavern's recesses."
+        },
+        "aesthetics": {
+          "composition": "Centered composition on the figure, with leading lines created by the reflections on the water drawing the eye towards the crystals in the background.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus throughout the scene.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "digital illustration",
+        "context": "This is a piece of concept art for a fantasy video game or an animated film, depicting a magical, hidden sanctuary.",
+        "artistic_style": "stylized, ethereal, glowing"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:56:07.675072"
+}

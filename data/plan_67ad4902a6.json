@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_67ad4902a6",
+  "base_seed": 1397950124,
+  "prompt": "I need a toy product for this characters, we be more acurrate to the original design of the image, dont use oni or excesive demonic forms of japanese culture",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1397950124,
+      "structured_prompt": {
+        "short_description": "A collectible toy product featuring two distinct characters, one with light blue hair and features, and the other with red hair and more aggressive facial markings. The toy is designed to be a single, split figure, accurately representing the original character designs in a stylized, non-demonic form. It is presented against a clean, neutral background, emphasizing its design and collectible nature.",
+        "objects": [
+          {
+            "description": "A stylized toy figure representing the 'light blue' character. It has light blue hair with darker blue accents, a pale face with blue markings, and a large, expressive blue eye with a lightning bolt detail. The toy captures the character's original design with smooth, clean lines suitable for a collectible.",
+            "location": "left half of center",
+            "relationship": "Part of a dual-character toy product, seamlessly joined with the 'red' character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Stylized human-like figure, predominantly light blue, dark blue, and white.",
+            "texture": "Smooth, matte plastic finish.",
+            "appearance_details": "Features a distinct lightning bolt in the eye and circular markings on the face.",
+            "pose": "Static, head-and-shoulders bust.",
+            "expression": "Calm and slightly melancholic.",
+            "clothing": "Dark, simple collar visible at the base of the neck.",
+            "action": "None, posed for display.",
+            "gender": "Androgynous, leaning feminine.",
+            "skin_tone_and_texture": "Pale white with blue markings, smooth plastic texture.",
+            "orientation": "Facing forward, slightly angled right."
+          },
+          {
+            "description": "A stylized toy figure representing the 'red' character. It has spiky red hair, a pale face with prominent black markings resembling stitches and lines, and a sharp, intense black eye. A small red drip is visible near the mouth. The toy accurately translates the character's original design into a collectible form, avoiding overly demonic features.",
+            "location": "right half of center",
+            "relationship": "Part of a dual-character toy product, seamlessly joined with the 'light blue' character.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Stylized human-like figure, predominantly red, black, and white.",
+            "texture": "Smooth, matte plastic finish.",
+            "appearance_details": "Features sharp, angular facial markings and a small red detail near the mouth.",
+            "pose": "Static, head-and-shoulders bust.",
+            "expression": "Intense and serious.",
+            "clothing": "Dark, simple collar visible at the base of the neck.",
+            "action": "None, posed for display.",
+            "gender": "Androgynous, leaning masculine.",
+            "skin_tone_and_texture": "Pale white with black markings, smooth plastic texture.",
+            "orientation": "Facing forward, slightly angled left."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit with soft fill from all sides.",
+          "shadows": "Minimal, soft, and subtle shadows directly beneath the toy to give it depth."
+        },
+        "aesthetics": {
+          "composition": "Centered, symmetrical composition, emphasizing the dual nature of the toy.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the entire toy product.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 50mm-85mm) to avoid distortion and present the toy accurately."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a collectible toy, intended for e-commerce listings or promotional materials.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:40:34.034825"
+}

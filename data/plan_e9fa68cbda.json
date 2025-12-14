@@ -1,0 +1,122 @@
+{
+  "plan_id": "plan_e9fa68cbda",
+  "base_seed": 1904216495,
+  "prompt": "Necesito que me des un juguete de esta imagen",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1904216495,
+      "structured_prompt": {
+        "short_description": "A stylized toy figure, inspired by the blue-haired character from the reference image, standing on a clean, minimalist display base. The toy captures the character's distinct features, including the blue hair, unique eye design, and facial markings, rendered in a collectible figurine style.",
+        "objects": [
+          {
+            "description": "A collectible toy figure of the blue-haired character. It features light blue hair with darker blue accents, a pale face with distinct dark blue markings around the eye, and a single light blue eye with a white pupil and a small lightning bolt symbol. The figure has a stylized, slightly angular design, reflecting the anime/manga aesthetic of the original character.",
+            "location": "center",
+            "relationship": "The main subject of the image, standing on the display base.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid figure with prominent blue hair and pale skin tones.",
+            "texture": "Smooth, matte plastic with some glossy elements for the eye.",
+            "appearance_details": "Detailed facial markings, stylized hair strands, and a distinct eye design with a lightning bolt.",
+            "pose": "Standing upright, facing slightly towards the viewer.",
+            "expression": "Neutral, slightly intense gaze.",
+            "clothing": "Subtle dark blue and black clothing details visible around the neck and shoulders, consistent with the reference.",
+            "action": "Standing still.",
+            "gender": "Androgynous, leaning feminine.",
+            "skin_tone_and_texture": "Pale, smooth plastic.",
+            "orientation": "Upright"
+          },
+          {
+            "description": "A simple, circular display base for the toy figure.",
+            "location": "bottom-center",
+            "relationship": "Supports the toy figure.",
+            "relative_size": "small",
+            "shape_and_color": "Circular, flat, and dark gray.",
+            "texture": "Smooth, matte plastic.",
+            "appearance_details": "Minimalist design, no visible branding.",
+            "orientation": "Horizontal"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Soft, diffused light from above and slightly in front.",
+          "shadows": "Subtle, soft shadows cast directly beneath the figure, indicating a clean light source."
+        },
+        "aesthetics": {
+          "composition": "Centered, portrait composition, focusing on the toy figure.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the toy figure.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 50mm)"
+        },
+        "style_medium": "3D render",
+        "context": "This is a concept for a collectible toy figure, rendered in a clean, professional style for product presentation or promotional material.",
+        "artistic_style": "stylized, anime-inspired, modern"
+      }
+    },
+    {
+      "index": 1,
+      "seed": 1904216618,
+      "structured_prompt": {
+        "short_description": "A stylized toy figure, inspired by the blue-haired character from the reference image, standing on a clean, minimalist display base. The toy captures the character's distinct features, including the blue hair, unique eye design, and facial markings, rendered in a collectible figurine style.",
+        "objects": [
+          {
+            "description": "A collectible toy figure of the blue-haired character. It features light blue hair with darker blue accents, a pale face with distinct dark blue markings around the eye, and a single light blue eye with a white pupil and a small lightning bolt symbol. The figure has a stylized, slightly angular design, reflecting the anime/manga aesthetic of the original character.",
+            "location": "center",
+            "relationship": "The main subject of the image, standing on the display base.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid figure with prominent blue hair and pale skin tones.",
+            "texture": "Smooth, matte plastic with some glossy elements for the eye.",
+            "appearance_details": "Detailed facial markings, stylized hair strands, and a distinct eye design with a lightning bolt.",
+            "pose": "Standing upright, facing slightly towards the viewer.",
+            "expression": "Neutral, slightly intense gaze.",
+            "clothing": "Subtle dark blue and black clothing details visible around the neck and shoulders, consistent with the reference.",
+            "action": "Standing still.",
+            "gender": "Androgynous, leaning feminine.",
+            "skin_tone_and_texture": "Pale, smooth plastic.",
+            "orientation": "Upright"
+          },
+          {
+            "description": "A simple, circular display base for the toy figure.",
+            "location": "bottom-center",
+            "relationship": "Supports the toy figure.",
+            "relative_size": "small",
+            "shape_and_color": "Circular, flat, and dark gray.",
+            "texture": "Smooth, matte plastic.",
+            "appearance_details": "Minimalist design, no visible branding.",
+            "orientation": "Horizontal"
+          }
+        ],
+        "background_setting": "subtle lifestyle scene (out-of-focus)",
+        "lighting": {
+          "conditions": "golden hour",
+          "direction": "Soft, diffused light from above and slightly in front.",
+          "shadows": "Subtle, soft shadows cast directly beneath the figure, indicating a clean light source."
+        },
+        "aesthetics": {
+          "composition": "Centered, portrait composition, focusing on the toy figure.",
+          "color_scheme": "warm + brand accent",
+          "mood_atmosphere": "warm aspirational",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "medium",
+          "focus": "Sharp focus on the toy figure.",
+          "camera_angle": "three-quarter",
+          "lens_focal_length": "Standard lens (e.g., 50mm)"
+        },
+        "style_medium": "3D render",
+        "context": "This is a concept for a collectible toy figure, rendered in a clean, professional style for product presentation or promotional material.",
+        "artistic_style": "stylized, anime-inspired, modern"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 15:42:49.701724"
+}

@@ -1,0 +1,55 @@
+{
+  "plan_id": "plan_56279fc329",
+  "base_seed": 1049920250,
+  "prompt": "Make a IRL image to this character\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1049920250,
+      "structured_prompt": {
+        "short_description": "A powerful male figure with spiky red hair and a stark white mask is captured in a dynamic, action-oriented pose. His muscular, scarred torso is prominent, and he wears a flowing white garment with a vibrant red sash. The scene suggests intense movement or combat, with a blurred, neutral background emphasizing the subject's raw energy and focus.",
+        "objects": [
+          {
+            "description": "A highly muscular male figure with defined abs, chest, and arms. His skin is fair with several fresh-looking red cuts and scrapes, indicating recent combat or struggle. He has spiky, voluminous red hair that appears to be in motion. He wears a plain white, featureless mask covering his entire face, with black markings for eyes and a stylized mouth, giving him an enigmatic and slightly menacing appearance.",
+            "location": "center",
+            "relationship": "The primary subject of the image, dominating the foreground.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Humanoid, fair skin, red hair, white mask",
+            "texture": "Smooth skin, slightly coarse hair, matte mask",
+            "appearance_details": "Visible scars and fresh cuts on torso and arms. The mask has a stark, almost porcelain-like quality.",
+            "pose": "Dynamic, mid-action pose, with arms slightly bent and body leaning forward as if in motion or preparing to strike. His left leg is bent, suggesting a powerful stance.",
+            "expression": "Hidden by mask, but the overall posture conveys intensity and determination.",
+            "clothing": "A simple, flowing white lower garment (like hakama or loose pants) and a long, vibrant red sash tied around his waist, with ends trailing.",
+            "action": "Engaged in a powerful, forward-moving action, possibly a lunge or a strike.",
+            "gender": "male",
+            "skin_tone_and_texture": "Fair, smooth skin with visible muscle definition and fresh red cuts.",
+            "orientation": "Facing slightly to the right, body angled towards the viewer."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit, with light evenly illuminating the subject's front.",
+          "shadows": "Minimal, soft shadows on the subject, primarily in the crevices of his muscles, indicating strong, direct light. The background has no discernible shadows due to blur."
+        },
+        "aesthetics": {
+          "composition": "Centered, dynamic composition, with the subject filling a significant portion of the frame. The pose creates strong diagonal lines, enhancing the sense of movement.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the subject, particularly the torso and mask.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a concept for a realistic portrayal of a powerful, masked warrior, suitable for a live-action adaptation of a graphic novel or a character study for a video game. The image aims to capture the raw intensity and enigmatic nature of the character in a real-world setting.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:45:03.207610"
+}

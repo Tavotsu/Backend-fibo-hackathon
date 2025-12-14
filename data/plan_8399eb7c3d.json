@@ -1,0 +1,75 @@
+{
+  "plan_id": "plan_8399eb7c3d",
+  "base_seed": 1297957311,
+  "prompt": "make a toy for this image, is a reploid called zero for the videogames series megaman\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1297957311,
+      "structured_prompt": {
+        "short_description": "A highly detailed collectible action figure of Zero from the Mega Man X series, posed dynamically as if in mid-battle. The figure is made of plastic with metallic paint finishes, capturing the character's iconic red, blue, and yellow armor. It stands on a display base designed to mimic a rocky, war-torn landscape, with a translucent blue energy effect emanating from its left arm, suggesting a powerful attack. The background is a blurred, dramatic sky with hints of a distant, futuristic cityscape, emphasizing the figure's heroic presence.",
+        "objects": [
+          {
+            "description": "A collectible action figure of Zero, a reploid from the Mega Man X video game series. The figure is meticulously sculpted, showcasing his signature red helmet with long blonde hair-like energy projections, red chest armor, dark blue limbs, and yellow accents on his joints and boots. His right arm is bent at the elbow, holding a blaster, while his left arm is extended forward with an open palm, from which a translucent blue energy effect emanates.",
+            "location": "center",
+            "relationship": "Main subject, standing on the display base.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Anthropomorphic, primarily red, blue, and yellow with blonde hair-like energy.",
+            "texture": "Smooth, glossy plastic with metallic paint applications.",
+            "appearance_details": "Highly articulated joints, detailed panel lines on armor, and a translucent blue energy effect accessory attached to the left hand.",
+            "pose": "Dynamic, action-oriented pose with one arm extended forward and the other holding a blaster.",
+            "expression": "N/A (robot/figure)",
+            "clothing": "Armored suit (part of the figure's design).",
+            "action": "Appears to be charging an energy attack or pointing towards an enemy.",
+            "gender": "Male (as per character design)",
+            "skin_tone_and_texture": "N/A (robot/figure)",
+            "orientation": "Facing slightly to the right, body angled towards the viewer."
+          },
+          {
+            "description": "A translucent blue energy effect accessory, shaped like a beam or wave, attached to the left hand of the Zero figure.",
+            "location": "left-center, emanating from Zero's hand",
+            "relationship": "Accessory for the Zero figure, suggesting an attack.",
+            "relative_size": "medium",
+            "shape_and_color": "Irregular, elongated beam shape, translucent blue.",
+            "texture": "Smooth, glossy plastic.",
+            "appearance_details": "Slightly glowing effect, with subtle internal striations to simulate energy.",
+            "orientation": "Extending horizontally forward from the figure's hand."
+          },
+          {
+            "description": "A display base for the action figure, sculpted to resemble a rugged, rocky terrain with debris, suggesting a battleground.",
+            "location": "bottom-center",
+            "relationship": "Supports the Zero figure.",
+            "relative_size": "large",
+            "shape_and_color": "Irregular, organic rock shapes, predominantly brown and grey.",
+            "texture": "Rough, textured plastic.",
+            "appearance_details": "Cracks and uneven surfaces to mimic natural rock formations and battle damage.",
+            "orientation": "Flat, serving as a foundation."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Backlit and side-lit, with light sources coming from the upper left and right, highlighting the figure's edges.",
+          "shadows": "Soft, elongated shadows cast by the figure and base, adding depth and drama."
+        },
+        "aesthetics": {
+          "composition": "Dynamic, heroic composition with the main figure prominently centered, utilizing leading lines from the energy effect and the figure's pose to draw the eye.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the Zero action figure and its immediate base.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a collectible action figure, intended for promotional materials, packaging, or online listings for fans of the Mega Man X series.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:52:54.563862"
+}

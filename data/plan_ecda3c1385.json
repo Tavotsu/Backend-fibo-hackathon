@@ -1,0 +1,119 @@
+{
+  "plan_id": "plan_ecda3c1385",
+  "base_seed": 1804824145,
+  "prompt": "Dame varios peluches del mismo estilo pero con distintos colores\r\n\r\n\r\n",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1804824145,
+      "structured_prompt": {
+        "short_description": "A collection of five chibi-style plush toys, each with a distinct color scheme, arranged in a playful group on a clean, minimalist surface. Each plush toy maintains the characteristic large head, small body, and expressive facial features of the original reference, but with varied hair and clothing colors to create a diverse yet cohesive set.",
+        "objects": [
+          {
+            "description": "A chibi-style plush toy with a large head and small body, featuring spiky red hair and a white face with black and red markings. It has a slightly grumpy expression.",
+            "location": "center-left",
+            "relationship": "Part of a group of five plush toys, positioned to the left of the central plush.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Rounded, predominantly red, white, and black.",
+            "texture": "Soft, plush fabric with a matte finish.",
+            "appearance_details": "Spiky red hair, large black eyes with red accents, and black markings on the face.",
+            "pose": "Sitting with legs bent and arms resting on its lap.",
+            "expression": "Grumpy, with furrowed brows.",
+            "clothing": "Simple pink outfit.",
+            "action": "Sitting still.",
+            "gender": "Ambiguous, stylized.",
+            "skin_tone_and_texture": "Light beige fabric for face and limbs.",
+            "orientation": "Facing forward."
+          },
+          {
+            "description": "A chibi-style plush toy with a large head and small body, featuring wavy blue hair and a light beige face with large blue eyes. It has a surprised or curious expression.",
+            "location": "center-right",
+            "relationship": "Part of a group of five plush toys, positioned to the right of the central plush.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Rounded, predominantly blue and light beige.",
+            "texture": "Soft, plush fabric with a matte finish.",
+            "appearance_details": "Wavy blue hair, large blue eyes, and a small open mouth.",
+            "pose": "Sitting with legs bent and arms resting on its lap.",
+            "expression": "Surprised or curious.",
+            "clothing": "Simple blue outfit.",
+            "action": "Sitting still.",
+            "gender": "Ambiguous, stylized.",
+            "skin_tone_and_texture": "Light beige fabric for face and limbs.",
+            "orientation": "Facing forward."
+          },
+          {
+            "description": "A chibi-style plush toy with a large head and small body, featuring spiky green hair and a white face with black and green markings. It has a determined expression.",
+            "location": "far-left",
+            "relationship": "Part of a group of five plush toys, positioned to the far left.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Rounded, predominantly green, white, and black.",
+            "texture": "Soft, plush fabric with a matte finish.",
+            "appearance_details": "Spiky green hair, large black eyes with green accents, and black markings on the face.",
+            "pose": "Sitting with legs bent and arms resting on its lap.",
+            "expression": "Determined.",
+            "clothing": "Simple yellow outfit.",
+            "action": "Sitting still.",
+            "gender": "Ambiguous, stylized.",
+            "skin_tone_and_texture": "Light beige fabric for face and limbs.",
+            "orientation": "Facing forward."
+          },
+          {
+            "description": "A chibi-style plush toy with a large head and small body, featuring wavy purple hair and a light beige face with large purple eyes. It has a gentle expression.",
+            "location": "far-right",
+            "relationship": "Part of a group of five plush toys, positioned to the far right.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Rounded, predominantly purple and light beige.",
+            "texture": "Soft, plush fabric with a matte finish.",
+            "appearance_details": "Wavy purple hair, large purple eyes, and a slight smile.",
+            "pose": "Sitting with legs bent and arms resting on its lap.",
+            "expression": "Gentle.",
+            "clothing": "Simple orange outfit.",
+            "action": "Sitting still.",
+            "gender": "Ambiguous, stylized.",
+            "skin_tone_and_texture": "Light beige fabric for face and limbs.",
+            "orientation": "Facing forward."
+          },
+          {
+            "description": "A chibi-style plush toy with a large head and small body, featuring spiky yellow hair and a white face with black and yellow markings. It has a mischievous expression.",
+            "location": "center",
+            "relationship": "Part of a group of five plush toys, positioned in the center.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Rounded, predominantly yellow, white, and black.",
+            "texture": "Soft, plush fabric with a matte finish.",
+            "appearance_details": "Spiky yellow hair, large black eyes with yellow accents, and black markings on the face.",
+            "pose": "Sitting with legs bent and arms resting on its lap.",
+            "expression": "Mischievous.",
+            "clothing": "Simple green outfit.",
+            "action": "Sitting still.",
+            "gender": "Ambiguous, stylized.",
+            "skin_tone_and_texture": "Light beige fabric for face and limbs.",
+            "orientation": "Facing forward."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Soft, diffused light from above and slightly in front.",
+          "shadows": "Subtle, soft shadows directly beneath and behind the plush toys, indicating a clean light source without harsh contrasts."
+        },
+        "aesthetics": {
+          "composition": "Horizontal arrangement of five plush toys, slightly staggered to create visual interest while maintaining a sense of unity. The composition is balanced.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on all five plush toys.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph intended for an e-commerce website or a toy catalog, showcasing a collection of stylized plush toys.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 16:22:11.796183"
+}

@@ -1,0 +1,91 @@
+{
+  "plan_id": "plan_9a3230bce4",
+  "base_seed": 1062537002,
+  "prompt": "I need a toy product for this characters",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1062537002,
+      "structured_prompt": {
+        "short_description": "A collectible action figure set featuring two distinct characters, one with a cool, serene blue aesthetic and the other with a fierce, intense red aesthetic. The figures are posed dynamically, ready for action, and displayed in a clear, windowed box packaging designed to showcase their details and contrasting personalities. The packaging includes graphic elements that highlight their unique features and a prominent logo.",
+        "objects": [
+          {
+            "description": "An articulated action figure representing the blue-themed character. It has light blue hair, a pale face with blue markings, and a calm yet determined expression. The figure is designed with multiple points of articulation for dynamic posing.",
+            "location": "left side of the packaging, slightly forward",
+            "relationship": "Part of a dual-figure set, contrasting with the red-themed figure.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Humanoid figure, predominantly light blue, white, and dark blue.",
+            "texture": "Smooth plastic with sculpted details for hair and clothing.",
+            "appearance_details": "Features a stylized, anime-inspired design with sharp lines and distinct facial markings. The eyes are a striking light blue with a lightning bolt symbol.",
+            "pose": "Dynamic, mid-action pose, possibly with one arm slightly raised.",
+            "expression": "Calm, focused, and slightly serious.",
+            "clothing": "Stylized dark blue and white outfit, possibly with armored elements.",
+            "action": "Ready for combat or a specific character ability.",
+            "gender": "Androgynous, leaning towards male.",
+            "skin_tone_and_texture": "Pale, smooth plastic.",
+            "orientation": "Facing slightly right, towards the center of the packaging."
+          },
+          {
+            "description": "An articulated action figure representing the red-themed character. It has spiky red hair, a pale face with black markings and stitches, and an intense, aggressive expression. The figure is designed with multiple points of articulation for dynamic posing.",
+            "location": "right side of the packaging, slightly behind the blue figure",
+            "relationship": "Part of a dual-figure set, contrasting with the blue-themed figure.",
+            "relative_size": "medium within frame",
+            "shape_and_color": "Humanoid figure, predominantly red, white, and black.",
+            "texture": "Smooth plastic with sculpted details for hair and clothing.",
+            "appearance_details": "Features a stylized, anime-inspired design with sharp lines, prominent black markings, and stitch details on the face. The eyes are dark and piercing.",
+            "pose": "Dynamic, aggressive pose, possibly with a fist clenched or arm extended.",
+            "expression": "Fierce, angry, and intense.",
+            "clothing": "Stylized dark red and black outfit, possibly with rugged or battle-worn elements.",
+            "action": "Engaged in combat or unleashing a powerful attack.",
+            "gender": "Androgynous, leaning towards male.",
+            "skin_tone_and_texture": "Pale, smooth plastic.",
+            "orientation": "Facing slightly left, towards the center of the packaging."
+          },
+          {
+            "description": "A clear, rectangular plastic window box designed to display the two action figures. It allows full visibility of the figures and their accessories.",
+            "location": "center of the frame, enclosing both figures",
+            "relationship": "Contains and displays the action figures.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Rectangular prism, transparent.",
+            "texture": "Smooth, glossy plastic.",
+            "appearance_details": "Crisp edges, minimal branding on the clear parts to maximize figure visibility.",
+            "orientation": "Upright, facing forward."
+          },
+          {
+            "description": "The cardboard backing and base of the product packaging, featuring graphic art that complements the figures. The left side has blue and white motifs, while the right side has red and black motifs, creating a visual split.",
+            "location": "behind and below the figures, forming the back and base of the box",
+            "relationship": "Provides structural support and thematic context for the figures.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Rectangular, split blue/white and red/black.",
+            "texture": "Smooth, matte cardboard.",
+            "appearance_details": "Features stylized patterns and possibly character-specific symbols in the respective color schemes.",
+            "orientation": "Vertical backing, horizontal base."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit with soft fill lights from multiple angles",
+          "shadows": "Soft, minimal shadows cast directly behind the product, indicating professional lighting."
+        },
+        "aesthetics": {
+          "composition": "Centered composition, showcasing the product prominently. The two figures are arranged to create a dynamic visual balance within the packaging.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the action figures and their packaging details.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 50mm-85mm) to capture the product without distortion."
+        },
+        "style_medium": "photograph",
+        "context": "This is a product photograph for a collectible action figure set, intended for e-commerce listings, toy catalogs, or retail display packaging.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:35:34.062821"
+}

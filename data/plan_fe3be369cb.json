@@ -1,0 +1,55 @@
+{
+  "plan_id": "plan_fe3be369cb",
+  "base_seed": 621969272,
+  "prompt": "\r\nmake a irl for this image, keep the city and the night background",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 621969272,
+      "structured_prompt": {
+        "short_description": "A mysterious figure, a young man with dark skin and dreadlocks, is captured in a realistic photograph, crouching on a rooftop overlooking a sprawling city at night. He wears a white, expressionless mask and a dark blue hoodie, with white wired earbuds visible. The city lights twinkle in the background, creating a dramatic and slightly ominous atmosphere.",
+        "objects": [
+          {
+            "description": "A young man with dark skin and short dreadlocks, wearing a white, featureless mask that covers his entire face. White wired earbuds are visible, hanging from his ears. His hands are resting on his knees.",
+            "location": "center foreground",
+            "relationship": "The main subject, positioned against the city skyline.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Human figure, dark skin, black dreadlocks, white mask, dark blue and black clothing.",
+            "texture": "Smooth skin, textured dreadlocks, fabric of clothing, smooth plastic mask.",
+            "appearance_details": "The mask has stylized, angry-looking eye slits and a downturned mouth shape, giving it a stern expression.",
+            "pose": "Crouching with knees bent and arms resting on his knees, leaning slightly forward.",
+            "expression": "Hidden by the mask, which itself conveys a stern, almost angry expression.",
+            "clothing": "A dark blue zip-up hoodie over a white t-shirt, and dark pants. The hoodie is slightly oversized.",
+            "action": "Crouching and observing.",
+            "gender": "male",
+            "skin_tone_and_texture": "Dark skin tone, smooth texture.",
+            "orientation": "Facing slightly to the right, looking down."
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Primarily front-lit from the city lights below, with some overhead ambient light.",
+          "shadows": "Soft, diffused shadows on the subject, indicating a lack of a single strong light source, with deeper shadows in the folds of his clothing."
+        },
+        "aesthetics": {
+          "composition": "Centered composition, with the subject occupying a significant portion of the frame, creating a sense of intimacy and focus. The city skyline provides a dramatic backdrop.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on the subject's face and upper body.",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "photograph",
+        "context": "This is a realistic photograph intended for a character study or an urban-themed editorial, capturing a moment of solitude and mystery in a bustling city environment.",
+        "artistic_style": "realistic"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:46:22.868752"
+}

@@ -1,0 +1,71 @@
+{
+  "plan_id": "plan_fb3d4e5236",
+  "base_seed": 1408061848,
+  "prompt": "make me a pixel art of this image",
+  "structured_prompts": [
+    {
+      "index": 0,
+      "seed": 1408061848,
+      "structured_prompt": {
+        "short_description": "A pixel art image depicting two distinct anime-style characters, split down the middle. The left side features a character with light blue hair and a calm, slightly sad expression, with a lightning bolt symbol in their eye. The right side shows a character with spiky red hair and a fierce, intense expression, with a visible scar or stitching on their cheek and a drop of blood near their mouth. The image emphasizes a stark contrast between the two halves, representing opposing forces or personalities.",
+        "objects": [
+          {
+            "description": "The left half of an anime-style character's face, featuring light blue hair with subtle highlights and a calm, somewhat melancholic expression. A small lightning bolt symbol is visible within the pupil of the eye. The character's skin is pale white with light blue accents.",
+            "location": "left half of the frame",
+            "relationship": "One half of a split character, contrasting with the right half.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shapes of light blue hair and pale white face.",
+            "texture": "Smooth, pixelated.",
+            "appearance_details": "Stylized anime features, prominent eye with a lightning bolt symbol.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Calm, slightly sad.",
+            "clothing": "Dark collar visible at the bottom.",
+            "action": "None.",
+            "gender": "Ambiguous, leaning feminine.",
+            "skin_tone_and_texture": "Pale white with light blue accents, smooth.",
+            "orientation": "Upright"
+          },
+          {
+            "description": "The right half of an anime-style character's face, characterized by spiky red hair and an intense, fierce expression. A distinct scar or stitching mark is present on the cheek, and a small drop of blood is near the corner of the mouth. The character's skin is pale white with red accents.",
+            "location": "right half of the frame",
+            "relationship": "One half of a split character, contrasting with the left half.",
+            "relative_size": "large within frame",
+            "shape_and_color": "Irregular shapes of spiky red hair and pale white face.",
+            "texture": "Smooth, pixelated.",
+            "appearance_details": "Stylized anime features, sharp eye, scar/stitching on cheek, blood drop.",
+            "pose": "Facing forward, head slightly tilted.",
+            "expression": "Fierce, intense.",
+            "clothing": "Dark collar visible at the bottom.",
+            "action": "None.",
+            "gender": "Ambiguous, leaning masculine.",
+            "skin_tone_and_texture": "Pale white with red accents, smooth.",
+            "orientation": "Upright"
+          }
+        ],
+        "background_setting": "clean premium studio background",
+        "lighting": {
+          "conditions": "studio softbox",
+          "direction": "Front-lit.",
+          "shadows": "Minimal, hard-edged shadows consistent with pixel art style."
+        },
+        "aesthetics": {
+          "composition": "Symmetrical split composition, centered on the two character halves.",
+          "color_scheme": "brand-aligned",
+          "mood_atmosphere": "premium minimal",
+          "preference_score": "very high",
+          "aesthetic_score": "very high"
+        },
+        "photographic_characteristics": {
+          "depth_of_field": "shallow",
+          "focus": "Sharp focus on subjects",
+          "camera_angle": "eye-level",
+          "lens_focal_length": "Standard lens (e.g., 35mm-50mm)"
+        },
+        "style_medium": "pixel art",
+        "context": "This is a concept for a pixel art character portrait, possibly for a video game or digital avatar, showcasing a duality of personality or power.",
+        "artistic_style": "retro, digital, stylized"
+      }
+    }
+  ],
+  "created_at": "2025-12-13 14:42:12.939338"
+}
