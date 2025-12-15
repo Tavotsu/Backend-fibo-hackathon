@@ -191,9 +191,9 @@ For implementation details, see the following key files:
 
 ## BrandLab team
 
-- Tavotsu -> `Backend & Deployment`
+- Tavotsu -> `Backend, Deployment & Debugging`
 - Zenith-AB -> `Backend & AI integration`
 - Krist0-afk -> `Frontend`
-- Elchacra -> `Testing`
+- Elchacra -> `Testing & Debugging`
 - ManuelADMN -> `AI integration`
 
