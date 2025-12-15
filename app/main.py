@@ -1,4 +1,5 @@
 import os
+import certifi
 from dotenv import load_dotenv
 load_dotenv()
 from fastapi import FastAPI
@@ -16,7 +17,12 @@ async def lifespan(app: FastAPI):
     if not mongo_uri:
         print("ADVERTENCIA: MONGO_URI no está definido")
     else:
-        client = AsyncIOMotorClient(mongo_uri)
+        # 2. AGREGAR tlsCAFile=certifi.where() AQUÍ
+        client = AsyncIOMotorClient(
+            mongo_uri,
+            tlsCAFile=certifi.where() 
+        )
+        
         # Initialize Beanie with the Motor client and document models
         await init_beanie(
             database=client.ai_art_director, # type: ignore
