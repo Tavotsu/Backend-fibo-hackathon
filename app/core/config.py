@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     SUPABASE_REGION: str = os.getenv("SUPABASE_REGION", "us-east-1")
 
     # Auth Settings
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "your-super-secret-key-change-it")
+    SECRET_KEY: str = os.getenv("")
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7 # 1 week
     
