@@ -1,13 +1,19 @@
+import logging
+import threading
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from supabase import create_client, Client
-from app.core.config import settings
 from pydantic import BaseModel
+from supabase import Client, create_client
+
+from app.core.config import settings
+
+logger = logging.getLogger(__name__)
+
 
 # Dummy endpoint for Swagger (since we use Supabase external auth)
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 
-import threading
 
 # Lazy loading Supabase Client with atomic initialization
 _supabase: Client | None = None

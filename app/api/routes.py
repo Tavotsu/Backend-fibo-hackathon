@@ -1,15 +1,20 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks
-from typing import List
+from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks, Form
+from typing import List, Optional
 from app.schemas.fibo import (
     Campaign, CampaignCreate, 
     Product, 
     Plan, PlanRequest, 
     BriaStructuredPrompt,
-    ExecuteRequest
+    ExecuteRequest,
+    BriaParameters,
+    ProposedVariation,
 )
+import json
+import traceback
 from app.services.storage import upload_image_to_supabase
 from app.services.agent import brand_guidelines_to_variations
 from app.services.bria import generate_with_fibo, batch_generate, BriaAPIError
+from app.services import jobs
 import uuid
 import logging
 from app.api import deps
@@ -86,8 +91,8 @@ async def generate_plan(
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
     product = await Product.get(request.product_id)
-    if not product or product.user_id != current_user.id:
-        raise HTTPException(404, "Producto no encontrado")
+    if not product or product.user_id != current_user.id or product.campaign_id != campaign_id:
+        raise HTTPException(404, "Producto no encontrado o no pertenece a la campaña")
 
     # USAR AGENTE LLM para generar variaciones
     try:
@@ -185,9 +190,13 @@ async def get_plan(
 
 # List User Plans (History)
 @router.get("/plans", response_model=List[Plan])
-async def list_plans(current_user: deps.AuthUser = Depends(deps.get_current_user)):
+async def list_plans(
+    current_user: deps.AuthUser = Depends(deps.get_current_user),
+    skip: int = 0,
+    limit: int = 50
+):
     """Lista todos los planes (historial) del usuario, ordenados por fecha"""
-    return await Plan.find(Plan.user_id == current_user.id).sort("-created_at").to_list()
+    return await Plan.find(Plan.user_id == current_user.id).sort("-created_at").skip(skip).limit(limit).to_list()
 
 # List Campaigns
 @router.get("/campaigns", response_model=List[Campaign])
@@ -200,9 +209,7 @@ async def list_campaigns(current_user: deps.AuthUser = Depends(deps.get_current_
 # NEW: Async Generation Endpoints (Playground / Direct)
 # -------------------------------------------------------------------------
 
-from fastapi import Form
-from app.services import jobs
-from app.schemas.fibo import BriaParameters
+
 
 @router.post("/generate-async")
 async def generate_async(
@@ -262,10 +269,10 @@ async def generate_async(
 async def process_generation_job(
     job_id: str, 
     prompt: str, 
-    image_url: str = None, 
+    image_url: Optional[str] = None, 
     variations: int = 4, 
-    brand_guidelines: str = None,
-    user_id: str = None, # Now accepts user_id
+    brand_guidelines: Optional[str] = None,
+    user_id: Optional[str] = None, # Now accepts user_id
     aspect_ratio: str = "1:1" # New param
 ):
     try:
@@ -273,9 +280,6 @@ async def process_generation_job(
         
         # Use Orchestrator if available for smarter generation, or fallback to loop
         # For simplicity and robust persistence, we use the loop but save to DB.
-        
-        from app.services import bria
-        from app.schemas.fibo import Plan, ProposedVariation, BriaParameters
         
         results = []
         proposed_vars = [] # To save in Plan
@@ -302,7 +306,7 @@ async def process_generation_job(
             try:
                 # Use Smart Agent if integrated? 
                 # For now, stick to direct bria call which is working.
-                res = await bria.generate_with_fibo(params, mode=mode)
+                res = await generate_with_fibo(params, mode=mode)
                 
                 if res.get("image_url"):
                     img_url = res["image_url"]
@@ -313,7 +317,6 @@ async def process_generation_job(
                     sp = res.get("structured_prompt", {})
                     if isinstance(sp, str):
                         try:
-                            import json
                             sp = json.loads(sp)
                         except json.JSONDecodeError:
                             sp = {}
@@ -354,8 +357,8 @@ async def process_generation_job(
                 logger.exception(f"Failed to persist plan to MongoDB: {db_e}")
                 
     except Exception as e:
-        logger.error(f"Job failed: {e}")
-        await jobs.fail_job(job_id, str(e))
+        logger.exception(f"Job {job_id} failed")
+        await jobs.fail_job(job_id, str(e), trace=traceback.format_exc())
 
 @router.get("/jobs/{job_id}")
 async def get_job_status(job_id: str, current_user: deps.AuthUser = Depends(deps.get_current_user)):

@@ -1,12 +1,12 @@
 import asyncio
 import os
 from dotenv import load_dotenv
-load_dotenv()
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-from app.schemas.fibo import Campaign, Product, Plan
 
 from app.core.config import settings
+from app.schemas.fibo import Campaign, Product, Plan, Job
+load_dotenv()
 
 async def main():
     mongo_uri = os.getenv("MONGO_URI")
@@ -21,7 +21,7 @@ async def main():
         
         await init_beanie(
             database=client[db_name],
-            document_models=[Campaign, Product, Plan]
+            document_models=[Campaign, Product, Plan, Job]
         )
         print("MongoDB Connected.")
 
