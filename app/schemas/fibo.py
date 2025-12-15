@@ -130,3 +130,29 @@ class PlanRequest(BaseModel):
 class ExecuteRequest(BaseModel):
     plan_id: str
     selected_variations: List[int]  # Índices de variaciones a ejecutar
+
+class Job(Document):
+    job_id: Indexed(str, unique=True) # type: ignore
+    user_id: Optional[Indexed(str)] = None # type: ignore
+    prompt: str
+    variations: int = 4
+    stage: str = "QUEUED"
+    progress: float = 0
+    created_at: float = Field(default_factory=lambda: datetime.now().timestamp())
+    updated_at: float = Field(default_factory=lambda: datetime.now().timestamp())
+    
+    events: List[dict] = []
+    results: List[str] = []
+    partial_results: List[dict] = []
+    
+    error: Optional[str] = None
+    trace: Optional[str] = None
+    
+    # Context
+    image_path: Optional[str] = None
+    brand_guidelines: Optional[str] = None
+    aspect_ratio: Optional[str] = "1:1"
+    plan_id: Optional[str] = None
+
+    class Settings:
+        name = "jobs"

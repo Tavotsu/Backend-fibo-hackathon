@@ -242,7 +242,7 @@ async def generate_async(
         raise HTTPException(status_code=400, detail="Variations must be between 1 and 8")
 
     # 2. Create Job
-    job = jobs.create_job(prompt, brand_guidelines, variations, aspect_ratio, public_url, user_id=current_user.id)
+    job = await jobs.create_job(prompt, brand_guidelines, variations, aspect_ratio, public_url, user_id=current_user.id)
     
     # 3. Start Background Task
     background_tasks.add_task(
@@ -252,7 +252,8 @@ async def generate_async(
         public_url, 
         variations, 
         brand_guidelines,
-        current_user.id  # PASS USER ID
+        current_user.id,  # PASS USER ID
+        aspect_ratio      # PASS ASPECT RATIO
     )
     
     return {"job_id": job.job_id, "status": "queued"}
@@ -264,10 +265,11 @@ async def process_generation_job(
     image_url: str = None, 
     variations: int = 4, 
     brand_guidelines: str = None,
-    user_id: str = None # Now accepts user_id
+    user_id: str = None, # Now accepts user_id
+    aspect_ratio: str = "1:1" # New param
 ):
     try:
-        jobs.update_job(job_id, stage=jobs.JobStage.STARTED, progress=10)
+        await jobs.update_job(job_id, stage=jobs.JobStage.STARTED, progress=10)
         
         # Use Orchestrator if available for smarter generation, or fallback to loop
         # For simplicity and robust persistence, we use the loop but save to DB.
@@ -278,18 +280,23 @@ async def process_generation_job(
         results = []
         proposed_vars = [] # To save in Plan
         
+        effective_prompt = prompt
+        if brand_guidelines:
+            effective_prompt = f"{prompt}. Context: {brand_guidelines}"
+        
         for i in range(variations):
             progress_step = 10 + int((i / variations) * 80)
-            jobs.update_job(job_id, progress=progress_step)
-            jobs.add_event(job_id, f"Generating variation {i+1}/{variations}...")
+            await jobs.update_job(job_id, progress=progress_step)
+            await jobs.add_event(job_id, f"Generating variation {i+1}/{variations}...")
             
             mode = "inspire" if image_url else "generate"
             
             params = BriaParameters(
-                prompt=prompt,
+                prompt=effective_prompt,
                 reference_image_url=image_url,
                 camera_angle="eye_level",
-                seed=None
+                seed=None,
+                aspect_ratio=aspect_ratio
             )
             
             try:
@@ -299,7 +306,7 @@ async def process_generation_job(
                 
                 if res.get("image_url"):
                     img_url = res["image_url"]
-                    jobs.add_result(job_id, img_url)
+                    await jobs.add_result(job_id, img_url)
                     results.append(img_url)
                     
                     # Handle SP format
@@ -321,12 +328,12 @@ async def process_generation_job(
                     
             except Exception as e:
                 logger.error(f"Error generating variation {i}: {e}")
-                jobs.add_event(job_id, f"Error on var {i+1}: {str(e)}")
+                await jobs.add_event(job_id, f"Error on var {i+1}: {str(e)}")
         
         if not results:
              raise Exception("No images could be generated.")
 
-        jobs.complete_job(job_id, results)
+        await jobs.complete_job(job_id, results)
         
         # PERSIST TO MONGODB (PLAN HISTORY)
         if user_id and proposed_vars:
@@ -348,12 +355,12 @@ async def process_generation_job(
                 
     except Exception as e:
         logger.error(f"Job failed: {e}")
-        jobs.fail_job(job_id, str(e))
+        await jobs.fail_job(job_id, str(e))
 
 @router.get("/jobs/{job_id}")
 async def get_job_status(job_id: str, current_user: deps.AuthUser = Depends(deps.get_current_user)):
     """Obtiene el estado de un trabajo de generación en segundo plano"""
-    status = jobs.get_job_status(job_id)
+    status = await jobs.get_job_status(job_id)
     if not status:
         raise HTTPException(status_code=404, detail="Job not found")
         

@@ -6,7 +6,7 @@ from contextlib import asynccontextmanager
 from app.api.routes import router as api_router
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-from app.schemas.fibo import Campaign, Product, Plan
+from app.schemas.fibo import Campaign, Product, Plan, Job
 
 # Life cycle of the application
 @asynccontextmanager
@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI):
         # Initialize Beanie with the Motor client and document models
         await init_beanie(
             database=client.ai_art_director, # type: ignore
-            document_models=[Campaign, Product, Plan]
+            document_models=[Campaign, Product, Plan, Job]
         )
         print("MongoDB Conectado\n")
         print("Backend inicializado")

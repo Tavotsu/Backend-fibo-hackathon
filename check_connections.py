@@ -34,6 +34,10 @@ def check_supabase():
         print("❌ Supabase URL is missing or invalid.")
         return False
         
+    if not create_client:
+        print("❌ Supabase library is missing or failed to import.")
+        return False
+
     try:
         supabase: Client = create_client(url, key)
         # Try a lightweight call

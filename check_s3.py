@@ -19,6 +19,10 @@ def check_s3():
     print(f"Region:   {region}")
     # Don't print keys for security
     
+    if not key or not secret:
+        print("\n❌ FAIL: SUPABASE_ACCESS_KEY or SUPABASE_SECRET_KEY is missing!")
+        return
+
     if "PLACEHOLDER" in key or "PLACEHOLDER" in secret:
         print("\n❌ FAIL: You still have PLACEHOLDER keys in .env!")
         print("   Please replace them with real Supabase Storage keys.")
@@ -65,20 +69,20 @@ def check_s3():
                 else:
                     print(f"❌ Public URL FAILED ({r.status_code}). Bria cannot read this file!")
                     print("   👉 ACTION: Go to Supabase > Storage > ai_art_director > Toggle 'Public Bucket' to ON.")
-            except Exception as e:
-                print(f"❌ Upload/Fetch Error: {repr(e)}")
+            except (ClientError, requests.RequestException) as e:
+                print(f"❌ Upload/Fetch Error: {e!r}")
             finally:
                 # Cleanup
                 try:
                     s3.delete_object(Bucket=bucket, Key=test_filename)
                     print("🧹 Cleanup: Test object deleted.")
                 except Exception as cleanup_e:
-                    print(f"⚠️ Cleanup Failed: {repr(cleanup_e)}")
+                    print(f"⚠️ Cleanup Failed: {cleanup_e!r}")
 
     except ClientError as e:
-        print(f"\n❌ S3 Error: {e}")
+        print(f"\n❌ S3 Error: {e!r}")
     except Exception as e:
-        print(f"\n❌ General Error: {repr(e)}")
+        print(f"\n❌ Unexpected Error: {e!r}")
 
 if __name__ == "__main__":
     check_s3()
