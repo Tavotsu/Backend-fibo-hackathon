@@ -10,12 +10,14 @@ class Settings(BaseSettings):
     
     # Bria AI API Configuration
     BRIA_API_KEY: str = os.getenv("BRIA_API_KEY", "")
-    BRIA_API_URL: str = "https://engine.prod.bria-api.com/v1"
-    BRIA_IMAGE_GENERATE_ENDPOINT: str = "/v2/image/generate"
+    BRIA_API_URL: str = "https://engine.prod.bria-api.com/v2"
+    BRIA_IMAGE_GENERATE_ENDPOINT: str = "/image/generate"
     BRIA_STRUCTURED_PROMPT_ENDPOINT: str = "/v2/structured_prompt/generate"
     
-    # OpenAI para agente LLM (opcional, alternativa a Gemini)
+    # OpenAI / Compatible LLM (DeepSeek, etc.)
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
+    OPENAI_BASE_URL: str = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+    LLM_MODEL_NAME: str = os.getenv("LLM_MODEL_NAME", "gpt-4o-mini")
     
     # Google Gemini (usado por FIBO internamente)
     GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
@@ -24,12 +26,22 @@ class Settings(BaseSettings):
     MONGO_URI: str = os.getenv("MONGO_URI", "")
     DB_NAME: str = "ai_art_director"
     
-    # Supabase Storage (S3-compatible)
+    # Supabase Storage & Auth
+    SUPABASE_URL: str = os.getenv("SUPABASE_URL", "")
+    SUPABASE_KEY: str = os.getenv("SUPABASE_KEY", "") # Service Role Key for Backend or Anon if just verifying
+    SUPABASE_JWT_SECRET: str = os.getenv("SUPABASE_JWT_SECRET", "") # Optional for manual verify
+    
+    # S3 Compatibility (Keep existing if relying on boto3)
     SUPABASE_ENDPOINT_URL: str = os.getenv("SUPABASE_ENDPOINT_URL", "")
     SUPABASE_ACCESS_KEY: str = os.getenv("SUPABASE_ACCESS_KEY", "")
     SUPABASE_SECRET_KEY: str = os.getenv("SUPABASE_SECRET_KEY", "")
     SUPABASE_BUCKET_NAME: str = os.getenv("SUPABASE_BUCKET_NAME", "")
     SUPABASE_REGION: str = os.getenv("SUPABASE_REGION", "us-east-1")
+
+    # Auth Settings
+    SECRET_KEY: str = os.getenv("")
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7 # 1 week
     
     # Application Settings
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"

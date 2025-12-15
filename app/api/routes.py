@@ -1,28 +1,39 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks
-from typing import List
+from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks, Form
+from typing import List, Optional
 from app.schemas.fibo import (
     Campaign, CampaignCreate, 
     Product, 
     Plan, PlanRequest, 
     BriaStructuredPrompt,
-    ExecuteRequest
+    ExecuteRequest,
+    BriaParameters,
+    ProposedVariation,
 )
+import json
+import traceback
 from app.services.storage import upload_image_to_supabase
 from app.services.agent import brand_guidelines_to_variations
 from app.services.bria import generate_with_fibo, batch_generate, BriaAPIError
+from app.services import jobs
 import uuid
 import logging
+from app.api import deps
+from fastapi import Depends
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
 # 1. Gestión de Campañas
 @router.post("/campaigns", response_model=Campaign)
-async def create_campaign(campaign_in: CampaignCreate):
+async def create_campaign(
+    campaign_in: CampaignCreate,
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
+):
     """Crea una nueva campaña con brand guidelines"""
     new_campaign = Campaign(
         name=campaign_in.name,
-        brand_guidelines=campaign_in.brand_guidelines
+        brand_guidelines=campaign_in.brand_guidelines,
+        user_id=current_user.id
     )
     await new_campaign.insert()
     logger.info(f"Campaña creada: {new_campaign.id}")
@@ -30,22 +41,27 @@ async def create_campaign(campaign_in: CampaignCreate):
 
 # 2. Ingesta de Producto
 @router.post("/campaigns/{campaign_id}/upload-product")
-async def upload_product(campaign_id: str, file: UploadFile = File(...)):
+async def upload_product(
+    campaign_id: str, 
+    file: UploadFile = File(...),
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
+):
     """Sube imagen de producto a Supabase"""
     
-    # Check if campaign exists
+    # Check if campaign exists and belongs to user
     campaign = await Campaign.get(campaign_id)
-    if not campaign:
+    if not campaign or campaign.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
-    public_url = await upload_image_to_supabase(file)
+    public_url = await upload_image_to_supabase(file, user_id=current_user.id)
     if not public_url:
         raise HTTPException(status_code=500, detail="Error subiendo imagen")
     
     new_product = Product(
         campaign_id=str(campaign.id),
         image_url=public_url,
-        original_filename=file.filename or "unknown"
+        original_filename=file.filename or "unknown",
+        user_id=current_user.id
     )
     await new_product.insert()
     
@@ -59,7 +75,11 @@ async def upload_product(campaign_id: str, file: UploadFile = File(...)):
 
 # Generate Plan con AI Agent
 @router.post("/campaigns/{campaign_id}/generate-plan", response_model=Plan)
-async def generate_plan(campaign_id: str, request: PlanRequest):
+async def generate_plan(
+    campaign_id: str, 
+    request: PlanRequest,
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
+):
     """
     Genera plan de variaciones usando AI Agent
     El agente LLM convierte brand guidelines en variaciones creativas con parámetros FIBO
@@ -67,16 +87,12 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
     
     # Verificar campaña y producto
     campaign = await Campaign.get(campaign_id)
-    if not campaign:
+    if not campaign or campaign.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Campaña no encontrada")
     
     product = await Product.get(request.product_id)
-    if not product:
-        raise HTTPException(404, "Producto no encontrado")
-        
-    campaign = await Campaign.get(campaign_id)
-    if not campaign:
-         raise HTTPException(404, "Campaña no encontrada")
+    if not product or product.user_id != current_user.id or product.campaign_id != campaign_id:
+        raise HTTPException(404, "Producto no encontrado o no pertenece a la campaña")
 
     # USAR AGENTE LLM para generar variaciones
     try:
@@ -94,7 +110,8 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
         campaign_id=campaign_id,
         product_id=str(product.id),
         proposed_variations=variations,
-        status="pending"
+        status="pending",
+        user_id=current_user.id
     )
     await new_plan.insert()
 
@@ -107,14 +124,15 @@ async def generate_plan(campaign_id: str, request: PlanRequest):
 async def execute_plan(
     campaign_id: str, 
     request: ExecuteRequest,
-    background_tasks: BackgroundTasks
+    background_tasks: BackgroundTasks,
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
 ):
     """
     Ejecuta plan generando imágenes con FIBO
     Soporta generación batch de múltiples variaciones
     """
     plan = await Plan.get(request.plan_id)
-    if not plan:
+    if not plan or plan.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Plan no encontrado")
     
     # Filtrar variaciones seleccionadas
@@ -160,16 +178,197 @@ async def execute_plan(
 
 # Get Plan (útil para ver resultados)
 @router.get("/plans/{plan_id}", response_model=Plan)
-async def get_plan(plan_id: str):
+async def get_plan(
+    plan_id: str,
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
+):
     """Obtiene un plan con sus variaciones y resultados"""
     plan = await Plan.get(plan_id)
-    if not plan:
+    if not plan or plan.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Plan no encontrado")
     return plan
 
+# List User Plans (History)
+@router.get("/plans", response_model=List[Plan])
+async def list_plans(
+    current_user: deps.AuthUser = Depends(deps.get_current_user),
+    skip: int = 0,
+    limit: int = 50
+):
+    """Lista todos los planes (historial) del usuario, ordenados por fecha"""
+    return await Plan.find(Plan.user_id == current_user.id).sort("-created_at").skip(skip).limit(limit).to_list()
+
 # List Campaigns
 @router.get("/campaigns", response_model=List[Campaign])
-async def list_campaigns():
+async def list_campaigns(current_user: deps.AuthUser = Depends(deps.get_current_user)):
     """Lista todas las campañas"""
-    campaigns = await Campaign.find_all().to_list()
+    campaigns = await Campaign.find(Campaign.user_id == current_user.id).to_list()
     return campaigns
+
+# -------------------------------------------------------------------------
+# NEW: Async Generation Endpoints (Playground / Direct)
+# -------------------------------------------------------------------------
+
+
+
+@router.post("/generate-async")
+async def generate_async(
+    background_tasks: BackgroundTasks,
+    prompt: str = Form(...),
+    image: UploadFile = File(None),
+    brand_guidelines: str = Form(None),
+    variations: int = Form(1),
+    aspect_ratio: str = Form("1:1"),
+    current_user: deps.AuthUser = Depends(deps.get_current_user)
+):
+    """
+    Endpoint asíncrono para generar imágenes (Playground Flow).
+    Sube imagen (si existe), crea Job y procesa en background.
+    """
+    # 1. Upload Image if present
+    public_url = None
+    if image:
+        # Validate Content-Type
+        if not image.content_type or not image.content_type.startswith("image/"):
+            raise HTTPException(400, "File must be an image using a supported format (jpeg, png, etc.)")
+        
+        # Validate Size (Max 10MB)
+        image.file.seek(0, 2)
+        file_size = image.file.tell()
+        image.file.seek(0)
+        
+        if file_size > 10 * 1024 * 1024: # 10MB
+            raise HTTPException(400, "Image size exceeds maximum limit of 10MB")
+
+        public_url = await upload_image_to_supabase(image, user_id=current_user.id)
+        if not public_url:
+            raise HTTPException(500, "Failed to upload input image to storage.")
+    
+    # Validate Variations
+    if variations < 1 or variations > 8:
+        raise HTTPException(status_code=400, detail="Variations must be between 1 and 8")
+
+    # 2. Create Job
+    job = await jobs.create_job(prompt, brand_guidelines, variations, aspect_ratio, public_url, user_id=current_user.id)
+    
+    # 3. Start Background Task
+    background_tasks.add_task(
+        process_generation_job, 
+        job.job_id, 
+        prompt, 
+        public_url, 
+        variations, 
+        brand_guidelines,
+        current_user.id,  # PASS USER ID
+        aspect_ratio      # PASS ASPECT RATIO
+    )
+    
+    return {"job_id": job.job_id, "status": "queued"}
+
+# Redefine process_generation_job to include persistence
+async def process_generation_job(
+    job_id: str, 
+    prompt: str, 
+    image_url: Optional[str] = None, 
+    variations: int = 4, 
+    brand_guidelines: Optional[str] = None,
+    user_id: Optional[str] = None, # Now accepts user_id
+    aspect_ratio: str = "1:1" # New param
+):
+    try:
+        await jobs.update_job(job_id, stage=jobs.JobStage.STARTED, progress=10)
+        
+        # Use Orchestrator if available for smarter generation, or fallback to loop
+        # For simplicity and robust persistence, we use the loop but save to DB.
+        
+        results = []
+        proposed_vars = [] # To save in Plan
+        
+        effective_prompt = prompt
+        if brand_guidelines:
+            effective_prompt = f"{prompt}. Context: {brand_guidelines}"
+        
+        for i in range(variations):
+            progress_step = 10 + int((i / variations) * 80)
+            await jobs.update_job(job_id, progress=progress_step)
+            await jobs.add_event(job_id, f"Generating variation {i+1}/{variations}...")
+            
+            mode = "inspire" if image_url else "generate"
+            
+            params = BriaParameters(
+                prompt=effective_prompt,
+                reference_image_url=image_url,
+                camera_angle="eye_level",
+                seed=None,
+                aspect_ratio=aspect_ratio
+            )
+            
+            try:
+                # Use Smart Agent if integrated? 
+                # For now, stick to direct bria call which is working.
+                res = await generate_with_fibo(params, mode=mode)
+                
+                if res.get("image_url"):
+                    img_url = res["image_url"]
+                    await jobs.add_result(job_id, img_url)
+                    results.append(img_url)
+                    
+                    # Handle SP format
+                    sp = res.get("structured_prompt", {})
+                    if isinstance(sp, str):
+                        try:
+                            sp = json.loads(sp)
+                        except json.JSONDecodeError:
+                            sp = {}
+                            
+                    # Add to proposed vars for persistence
+                    proposed_vars.append(ProposedVariation(
+                        concept_name=f"Quick Gen {i+1}",
+                        bria_parameters=params,
+                        generated_image_url=img_url,
+                        json_prompt=sp
+                    ))
+                    
+            except Exception as e:
+                logger.error(f"Error generating variation {i}: {e}")
+                await jobs.add_event(job_id, f"Error on var {i+1}: {str(e)}")
+        
+        if not results:
+             raise Exception("No images could be generated.")
+
+        await jobs.complete_job(job_id, results)
+        
+        # PERSIST TO MONGODB (PLAN HISTORY)
+        if user_id and proposed_vars:
+            try:
+                # Ensure imports again just in case scope issue
+                from app.schemas.fibo import Plan
+                
+                new_plan = Plan(
+                    campaign_id="playground",  # Generic campaign
+                    product_id="direct_upload",
+                    proposed_variations=proposed_vars,
+                    status="completed",
+                    user_id=user_id
+                )
+                await new_plan.insert()
+                logger.info(f"Persisted job {job_id} as Plan {new_plan.id} for user {user_id}")
+            except Exception as db_e:
+                logger.exception(f"Failed to persist plan to MongoDB: {db_e}")
+                
+    except Exception as e:
+        logger.exception(f"Job {job_id} failed")
+        await jobs.fail_job(job_id, str(e), trace=traceback.format_exc())
+
+@router.get("/jobs/{job_id}")
+async def get_job_status(job_id: str, current_user: deps.AuthUser = Depends(deps.get_current_user)):
+    """Obtiene el estado de un trabajo de generación en segundo plano"""
+    status = await jobs.get_job_status(job_id)
+    if not status:
+        raise HTTPException(status_code=404, detail="Job not found")
+        
+    # Security: Enforce Ownership
+    if status.get("user_id") and status.get("user_id") != current_user.id:
+        raise HTTPException(status_code=404, detail="Job not found")
+        
+    return status

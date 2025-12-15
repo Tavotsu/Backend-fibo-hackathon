@@ -18,8 +18,14 @@ _openai_client = None
 def get_openai_client():
     global _openai_client
     if _openai_client is None and settings.OPENAI_API_KEY:
-        _openai_client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        _openai_client = AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            base_url=settings.OPENAI_BASE_URL
+        )
     return _openai_client
+
+
+
 
 
 async def brand_guidelines_to_variations(
@@ -46,36 +52,46 @@ async def brand_guidelines_to_variations(
         return _generate_mock_variations(brand_guidelines, product_description, variations_count)
     
     system_prompt = """
-Eres un AI Art Director experto especializado en e-commerce y marketing visual.
-Tu trabajo es generar variaciones creativas de productos usando el modelo FIBO de Bria AI.
+Eres un AI Art Director de clase mundial y Trend Forecaster.
+Tu objetivo es generar conceptos visuales de ALTO IMPACTO para e-commerce.
 
-FIBO es un modelo JSON-native que acepta parámetros estructurados para control preciso:
+FASE 1: ANÁLISIS ESTRATÉGICO
+Antes de generar nada, analiza internamente:
+1. Categoría del Producto: ¿Es Moda, Tech, Comida, Belleza?
+2. Visual Trends 2024/2025: ¿Qué estilos están de moda para esta categoría? (e.g. 'Cyberpunk', 'Cottagecore', 'Minimalist Luxury').
+3. Reglas de Nicho:
+   - Comida -> Appetite appeal, warm lighting, macro details.
+   - Moda -> Dynamic poses, editorial lighting, texture focus.
+   - Tech -> Sleek, neon/cool lighting, floating compositions.
 
-PARÁMETROS DISPONIBLES:
+FASE 2: GENERACIÓN DE VARIACIONES (Chain of Thought applied)
+Genera variaciones que apliquen estas tendencias.
+- Usa el parámetro 'creativity_level' para variar desde "Seguro/Comercial" hasta "Disruptivo/Viral".
+- Para opciones "Disruptivas", usa ángulos extremos (worms_eye) y colores contrastantes.
+
+FIBO PARAMETERS REFERENCE:
 - camera_angle: "eye_level", "high_angle", "low_angle", "birds_eye", "worms_eye"
 - lighting_mode: "studio", "natural", "backlit", "dramatic", "golden_hour", "soft_diffused"
 - color_grading: "neutral", "warm", "cool", "cinematic", "vibrant", "muted"
 - focus_point: "center", "rule_of_thirds", "left", "right"
 - aspect_ratio: "1:1", "16:9", "9:16", "4:5", "3:2"
 
-INSTRUCCIONES:
-1. Genera variaciones que respeten las brand guidelines
-2. Cada variación debe tener un concepto único y creativo
-3. Los prompts deben ser descriptivos y profesionales
-4. Varía los parámetros para crear diversidad visual
-5. Piensa en casos de uso reales (hero images, product shots, lifestyle, etc.)
-
-Responde SOLO con un JSON válido en este formato:
+Responde SOLO con el JSON final:
 {
+  "analysis": {
+    "detected_category": "Sneakers",
+    "top_trends": ["Y2K Retro", "Futuristic Chrome", "Deconstructed"]
+  },
   "variations": [
     {
-      "concept_name": "Hero Product Shot",
-      "prompt": "Professional product photography of [product], clean white background, studio lighting, high resolution, commercial quality",
-      "camera_angle": "eye_level",
-      "lighting_mode": "studio",
-      "color_grading": "neutral",
+      "concept_name": "Y2K Retro Vibe",
+      "rationale": "Uses 2000s aesthetics which is trending for Gen-Z audiences.",
+      "prompt": "Professional product photography, [product], fish-eye lens effect, vibrant nostalgic colors, street style background",
+      "camera_angle": "low_angle",
+      "lighting_mode": "dramatic",
+      "color_grading": "vibrant",
       "focus_point": "center",
-      "aspect_ratio": "1:1"
+      "aspect_ratio": "4:5"
     }
   ]
 }

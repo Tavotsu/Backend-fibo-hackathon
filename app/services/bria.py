@@ -53,21 +53,31 @@ async def generate_with_fibo(
             response = await client.post(url, json=payload, headers=headers)
             
             if response.status_code == 200:
-                result = response.json()
-                logger.info(f"Imagen generada exitosamente: {result.get('result_url')}")
+                data = response.json()
+                logger.info("Imagen generada exitosamente")
+                
+                # Handle nested 'result' key if present (Common in V2)
+                result_data = data.get("result", data)
+                
+                # V2 uses 'image_url', V1 used 'result_url'
+                img_url = result_data.get("image_url") or result_data.get("result_url")
+                
                 return {
-                    "image_url": result.get("result_url"),
-                    "structured_prompt": result.get("structured_prompt"),
-                    "status": result.get("status")
+                    "image_url": img_url,
+                    "structured_prompt": result_data.get("structured_prompt"),
+                    "status": result_data.get("status", "complete")
                 }
-            else:
                 error_msg = f"Error FIBO API: {response.status_code} - {response.text}"
                 logger.error(error_msg)
+                with open("backend_error.log", "a") as f:
+                    f.write(f"API Error: {error_msg}\n")
                 raise BriaAPIError(error_msg)
-                
+
     except httpx.TimeoutException:
         raise BriaAPIError("Timeout al conectar con Bria API")
     except httpx.RequestError as e:
+        with open("backend_error.log", "a") as f:
+             f.write(f"Request Error: {str(e)}\n")
         raise BriaAPIError(f"Error de conexión: {str(e)}")
 
 

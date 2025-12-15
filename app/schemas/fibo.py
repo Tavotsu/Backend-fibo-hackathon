@@ -51,7 +51,7 @@ class AgentOutput(BaseModel):
     variations: List[BriaStructuredPrompt]
 
 # Modelos de base de datos (usando lo que ya tenías, ajustado)
-from beanie import Document
+from beanie import Document, Indexed
 from datetime import datetime
 
 # Component Models
@@ -91,6 +91,7 @@ class ProposedVariation(BaseModel):
 class Campaign(Document):
     name: str
     brand_guidelines: BrandGuidelines
+    user_id: Indexed(str) # type: ignore
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Settings:
@@ -100,6 +101,7 @@ class Product(Document):
     campaign_id: str
     image_url: str
     original_filename: str
+    user_id: Indexed(str) # type: ignore
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Settings:
@@ -110,6 +112,7 @@ class Plan(Document):
     product_id: str
     proposed_variations: List[ProposedVariation]
     status: str = "pending"  # pending, executing, completed
+    user_id: Indexed(str) # type: ignore
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Settings:
@@ -127,3 +130,29 @@ class PlanRequest(BaseModel):
 class ExecuteRequest(BaseModel):
     plan_id: str
     selected_variations: List[int]  # Índices de variaciones a ejecutar
+
+class Job(Document):
+    job_id: Indexed(str, unique=True) # type: ignore
+    user_id: Optional[Indexed(str)] = None # type: ignore
+    prompt: str
+    variations: int = 4
+    stage: str = "QUEUED"
+    progress: float = 0
+    created_at: float = Field(default_factory=lambda: datetime.now().timestamp())
+    updated_at: float = Field(default_factory=lambda: datetime.now().timestamp())
+    
+    events: List[dict] = []
+    results: List[str] = []
+    partial_results: List[dict] = []
+    
+    error: Optional[str] = None
+    trace: Optional[str] = None
+    
+    # Context
+    image_path: Optional[str] = None
+    brand_guidelines: Optional[str] = None
+    aspect_ratio: Optional[str] = "1:1"
+    plan_id: Optional[str] = None
+
+    class Settings:
+        name = "jobs"

@@ -6,7 +6,7 @@ from contextlib import asynccontextmanager
 from app.api.routes import router as api_router
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-from app.schemas.fibo import Campaign, Product, Plan
+from app.schemas.fibo import Campaign, Product, Plan, Job
 
 # Life cycle of the application
 @asynccontextmanager
@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI):
         # Initialize Beanie with the Motor client and document models
         await init_beanie(
             database=client.ai_art_director, # type: ignore
-            document_models=[Campaign, Product, Plan]
+            document_models=[Campaign, Product, Plan, Job]
         )
         print("MongoDB Conectado\n")
         print("Backend inicializado")
@@ -33,5 +33,19 @@ async def lifespan(app: FastAPI):
 
 # Passing the lifespan to FastAPI
 app = FastAPI(title="AI Art Director API", version="1.0.0", lifespan=lifespan)
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Permitir todo para el Hackathon (Frontend local, etc)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
 
 app.include_router(api_router, prefix="/api/v1")
